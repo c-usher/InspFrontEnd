@@ -1,6 +1,7 @@
 import React from "react";
+import propTypes from 'prop-types';
 // TODO: STYLE THIS <------
-export const LoginForm = ({handleOnChange}, username, pass) => {
+export const LoginForm = ({ handleOnChange, username, pass }) => {
   return (
     <div>
       <h1>User Login</h1>
@@ -35,3 +36,9 @@ export const LoginForm = ({handleOnChange}, username, pass) => {
     </div>
   );
 };
+
+LoginForm.propTypes = {
+  handleOnChange: propTypes.func.isRequired,
+  username: propTypes.string.isRequired,
+  pass: propTypes.string.isRequired
+}
