@@ -1,30 +1,37 @@
 import React from "react";
-import { FormControl, Button, InputLabel, Input } from "@material-ui/core";
-
-export const LoginForm = () => {
+// TODO: STYLE THIS <------
+export const LoginForm = ({handleOnChange}, username, pass) => {
   return (
     <div>
       <h1>User Login</h1>
       <hr />
-      <FormControl>
-        <InputLabel htmlFor="username">User Name </InputLabel>
-        <Input id="username-input" aria-describedby="username-text" required />
+      <form>
+        <label htmlFor="uname">User Name</label>
+        <input
+          type="text"
+          id="uname"
+          name="uname"
+          value={username}
+          onChange={handleOnChange}
+          placeholder="Enter Username"
+          required
+        />
         <br />
-      </FormControl>
-      <FormControl>
-        <InputLabel htmlFor="password">Password </InputLabel>
-        <Input id="password-input" aria-describedby="password-text" required />
-      </FormControl>
-      <FormControl>
-        <Button
-          type="submit"
-          fullWidth
-          variant="contained"
-          color="primary"
-        >
-          Sign In
-        </Button>
-      </FormControl>
+        <label htmlFor="pass">Password</label>
+        <input
+          type="text"
+          id="pass"
+          name="pass"
+          value={pass}
+          onChange={handleOnChange}
+          placeholder="Enter Password"
+          required
+        />
+        <br />
+        <input type="submit" value="Submit" />
+        <hr />
+        <a href="#!">Forget Password?</a>
+      </form>
     </div>
   );
 };
