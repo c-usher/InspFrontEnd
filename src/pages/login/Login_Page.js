@@ -30,10 +30,20 @@ export const LoginPage = () => {
     }
     console.log(username, pass);
   };
+   
+  const handleOnResetSubmit = (e) => {
+      e.preventDefault();
+      if (!username) {
+        return alert("Please enter your username!");
+      }
+      console.log(username);
+    };
 
-  const formSwitch = e => {
+
+
+  const formSwitch = (e) => {
     setFormLoad(e);
-  }
+  };
 
   return (
     <div className="login-page">
@@ -49,7 +59,7 @@ export const LoginPage = () => {
       {formLoad === "reset" && (
         <PasswordResetForm
           handleOnChange={handleOnChange}
-          handleOnSubmit={handleOnSubmit}
+          handleOnResetSubmit={handleOnResetSubmit}
           formSwitch={formSwitch}
           username={username}
         />

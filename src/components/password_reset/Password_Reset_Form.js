@@ -4,7 +4,7 @@ import propTypes from "prop-types";
 // TODO: -----> STYLE THIS PAGE <------
 export const PasswordResetForm = ({
   handleOnChange,
-  handleOnSubmit,
+  handleOnResetSubmit,
   formSwitch,
   username,
 }) => {
@@ -12,7 +12,7 @@ export const PasswordResetForm = ({
     <div>
       <h1>Reset Form</h1>
       <hr />
-      <form autoComplete="off" onSubmit={handleOnSubmit}>
+      <form autoComplete="off" onSubmit={handleOnResetSubmit}>
         <label htmlFor="username">User Name</label>
         <input
           type="text"
@@ -24,7 +24,7 @@ export const PasswordResetForm = ({
           required
         />
         <br />
-        <button type="submit" value="Submit" >Reset Password</button>
+        <button type="submit" value="Submit">Reset Password</button>
         <hr />
         <a href="#!" onClick={() => formSwitch("login")}>
           Back To Log In
@@ -36,6 +36,6 @@ export const PasswordResetForm = ({
 
 PasswordResetForm.propTypes = {
   handleOnChange: propTypes.func.isRequired,
-  handleOnSubmit: propTypes.func.isRequired,
+  handleOnResetSubmit: propTypes.func.isRequired,
   username: propTypes.string.isRequired,
 };
