@@ -8,6 +8,17 @@ export const LoginPage = () => {
 
   const handleOnChange = (e) => {
     const { name, value } = e.target;
+
+    switch (name) {
+      case "username":
+        setUsername(value);
+        break;
+      case "pass":
+        setPass(value);
+        break;
+      default:
+        break;
+    }
     console.log(name, value);
   };
 
