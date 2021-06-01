@@ -7,7 +7,9 @@ function App() {
   return (
     <div className="App">
       {/* <LoginPage /> */}
-     <DefaultLayout />
+      <DefaultLayout>
+        //Dashboard
+     </DefaultLayout>
     </div>
   );
 }
