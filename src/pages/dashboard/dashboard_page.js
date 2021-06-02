@@ -1,7 +1,7 @@
 import React from "react";
 import { Container, Row, Col, Button } from "react-bootstrap";
 import { UnitTable } from "../../components/units_table/Unit_Table_Comp";
-
+import units from '../../assets/data/dummy_data.json'
 export const Dashboard = () => {
   return (
     <Container>
@@ -22,7 +22,7 @@ export const Dashboard = () => {
       <hr />
       <Row>
         <Col className="units-table">
-          <UnitTable />
+          <UnitTable units={units} />
         </Col>
       </Row>
     </Container>

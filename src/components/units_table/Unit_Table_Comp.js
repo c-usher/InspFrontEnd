@@ -1,7 +1,7 @@
 import React from "react";
 import { Table } from "react-bootstrap";
 
-export const UnitTable = () => {
+export const UnitTable = ({units}) => {
   return (
     <Table striped bordered hover>
       <thead>
@@ -15,19 +15,17 @@ export const UnitTable = () => {
           <th>Inspected</th>
           <th>Notes</th>
         </tr>
-          </thead>
-          <tbody>
-              <tr>
-                  <td>007</td>
-                  <td>A</td>
-                  <td>True</td>
-                  <td>False</td>
-                  <td>False</td>
-                  <td>0</td>
-                  <td>False</td>
-                  <td>This is a note!</td>
-              </tr>
-          </tbody>
+      </thead>
+      <tbody>
+        {units.length &&
+          units.map((row) => (
+            <tr>
+                  <td>{row.id}</td>
+                  <td>{row.status}</td>
+                  <td>{row.addedAt}</td>
+            </tr>
+          ))}
+      </tbody>
     </Table>
   );
 };
