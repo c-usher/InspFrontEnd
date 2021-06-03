@@ -1,11 +1,13 @@
 import React from "react";
 import { Form, Jumbotron, Row, Col, Button } from "react-bootstrap";
 import PropTypes from  "prop-types";
-
+import './add_unit_form_style.css'
 
 export const AddUnitForm = ({ handleOnSubmit, handleOnChange, formData }) => {
   return (
-    <Jumbotron>
+      <Jumbotron className="mt-3 add-new-unit bg-light">
+          <h1 className="text-info text-center">Add A New Unit</h1>
+          <hr />
       <Form autoComplete="off" onSubmit={handleOnSubmit}>
         <Form.Group as={Row}>
           <Form.Label column sm={3}>
@@ -49,7 +51,7 @@ export const AddUnitForm = ({ handleOnSubmit, handleOnChange, formData }) => {
             />
           </Col>
         </Form.Group>
-        <Button type="submit" variant="info" block>
+        <Button type="submit" variant="info" block sz="lg">
           Add Unit
         </Button>
       </Form>
