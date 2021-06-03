@@ -41,7 +41,7 @@ export const AddUnitForm = ({
           <Col sm={9}>
             <Form.Control
               name="buildingLetter"
-              minLength="1"
+               minLength="1"
               maxLength="1"
               value={formData.buildingLetter}
               onChange={handleOnChange}

@@ -21,6 +21,7 @@ const initialStateForm = {
 export const AddUnit = () => {
   const handleOnSubmit = async (e) => {
     e.preventDefault();
+    setFormDataError(initialErrorStateForm);
     const unitValid = await unitNumCheck(formData.unitNumber);
     const buildingValid = await buildingCheck(formData.buildingLetter);
     const notesValid = await notesCheck(formData.notes);
