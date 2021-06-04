@@ -12,16 +12,14 @@ export const ShowUnitsPage = () => {
 
   const handleOnChange = (e) => {
     const { value } = e.target;
-    console.log(value);
     setStr(value);
     searchUnit(value);
   };
 
-  const searchUnit = (sttr) => {
+  const searchUnit = (input) => {
     const displayUnits = data.filter((row) =>
-      row.status.toLowerCase().includes(sttr.toLowerCase())
+      row.status.toLowerCase().includes(input.toLowerCase())
     );
-    console.log(displayUnits);
     setDispUnit(displayUnits);
   
   };

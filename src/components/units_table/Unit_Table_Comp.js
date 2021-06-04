@@ -3,6 +3,7 @@ import { Table } from "react-bootstrap";
 import { PropTypes } from "prop-types";
 
 export const UnitTable = ({ data }) => {
+ 
   return (
     <Table striped bordered hover>
       <thead>
