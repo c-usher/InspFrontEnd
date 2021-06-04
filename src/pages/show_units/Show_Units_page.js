@@ -12,17 +12,20 @@ export const ShowUnitsPage = () => {
   }, [str, dispUnit]);
 
   const handleOnChange = (e) => {
-    setStr(e.target.value);
+    const { value } = e.target;
+    console.log(value);
+    setStr(value);
+    searchUnit(value);
   };
 
   const searchUnit = (sttr) => {
     const displayUnits = data.filter((row) =>
       row.status.toLowerCase().includes(sttr.toLowerCase())
     );
-    // console.log(displayUnits);
+    console.log(displayUnits);
     setDispUnit(displayUnits);
+  
   };
-
   return (
     <Container>
       <Row className="mt-4">
@@ -36,7 +39,7 @@ export const ShowUnitsPage = () => {
       <hr />
       <Row>
         <Col>
-          <UnitTable data={data} />
+          <UnitTable data={dispUnit} />
         </Col>
       </Row>
     </Container>
