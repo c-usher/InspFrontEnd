@@ -2,21 +2,20 @@ import React from "react";
 import { Form, Row, Col } from "react-bootstrap";
 import { PropTypes } from "prop-types";
 
-export const SearchComp = ({handleOnChange, str}) => {
-    console.log(str);
+export const SearchComp = ({ handleOnChange, str }) => {
   return (
     <div>
       <Form>
         <Form.Group as={Row}>
-          <Form.Label column ms="2">
+          <Form.Label column sm="3">
             Search:{" "}
           </Form.Label>
-          <Col ms="9">
+          <Col sm="9">
             <Form.Control
-              name="searchInp"
+              name="searchStr"
               onChange={handleOnChange}
               value={str}
-              placeholder="Search ..."
+              placeholder="Search..."
             />
           </Col>
         </Form.Group>

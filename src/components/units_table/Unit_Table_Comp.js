@@ -1,7 +1,8 @@
 import React from "react";
 import { Table } from "react-bootstrap";
+import { PropTypes } from "prop-types";
 
-export const UnitTable = ({ units }) => {
+export const UnitTable = ({ data }) => {
   return (
     <Table striped bordered hover>
       <thead>
@@ -17,8 +18,8 @@ export const UnitTable = ({ units }) => {
         </tr>
       </thead>
       <tbody>
-        {units.length ? (
-          units.map((row) => (
+        {data.length ? (
+          data.map((row) => (
             <tr key={row.id}>
               <td>{row.id}</td>
               <td>{row.status}</td>
@@ -35,4 +36,8 @@ export const UnitTable = ({ units }) => {
       </tbody>
     </Table>
   );
+};
+
+UnitTable.propTypes = {
+  data: PropTypes.array.isRequired,
 };
