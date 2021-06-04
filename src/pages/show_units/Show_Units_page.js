@@ -6,9 +6,8 @@ import data from "../../assets/data/dummy_data.json";
 
 export const ShowUnitsPage = () => {
   const [str, setStr] = useState("");
-  const [dispUnit, setDispUnit] = useState([]);
+  const [dispUnit, setDispUnit] = useState(data);
   useEffect(() => {
-    setDispUnit(data);
   }, [str, dispUnit]);
 
   const handleOnChange = (e) => {
