@@ -1,18 +1,20 @@
 import './App.css';
-import { DefaultLayout } from './layout/Default_Layout';
+// import { DefaultLayout } from './layout/Default_Layout';
 // import { Dashboard } from './pages/dashboard/dashboard_page';
 // import { LoginPage } from './pages/login/Login_Page'
-import { AddUnit } from './pages/new-unit/Add_Unit_page';
+// import { AddUnit } from './pages/new-unit/Add_Unit_page';
+import { ShowUnitsPage } from './pages/show_units/Show_Units_page';
 
 
 function App() {
   return (
     <div className="App">
       {/* <LoginPage /> */}
-      <DefaultLayout>
+      {/* <DefaultLayout> */}
         {/* <Dashboard /> */}
-        <AddUnit />
-     </DefaultLayout>
+      {/* <AddUnit /> */}
+      <ShowUnitsPage />
+     {/* </DefaultLayout> */}
     </div>
   );
 }
