@@ -4,7 +4,7 @@ import PropTypes from "prop-types";
 
 export const AddNoteComp = ({ newNote, handleOnChange, handleOnSubmit }) => {
   return (
-    <Form onSubmit={handleOnSubmit}>
+    <Form onSubmit={handleOnSubmit} >
       <Form.Label>Add Note:</Form.Label>
       <br />
       <Form.Text> Please add your note here</Form.Text>

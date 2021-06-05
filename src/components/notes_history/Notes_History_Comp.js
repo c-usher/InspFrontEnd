@@ -1,7 +1,7 @@
 import React from "react";
 import PropTypes from "prop-types";
 import "./notes_history_style.css";
-
+import { Button } from "react-bootstrap";
 export const NotesHistoryComp = ({ notes }) => {
   if (!notes) return null;
   return notes.map((row, i) => (
@@ -11,6 +11,7 @@ export const NotesHistoryComp = ({ notes }) => {
         <div className="date">{row.date}</div>
       </div>
       <div className="note">{row.note}</div>
+      <Button variant="info">Remove Note</Button>
     </div>
   ));
 };
