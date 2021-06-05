@@ -1,18 +1,22 @@
 import React from "react";
 import PropTypes from "prop-types";
+import { makeStyles } from "@material-ui/core";
 
-export const NotesHistoryComp = ({ note }) => {
-  return (
+export const NotesHistoryComp = ({ notes }) => {
+  if (!notes) return null;
+  return notes.map((row, i) => (
     <div className="note-history">
-      <div className="unit-note">
-        <div className="added-by">ADDED BY</div>
-        <div className="date">DATE</div>
+      <div key={i} className="unit-note">
+        <div className="note-by">{row.noteBy}</div>
+        <div className="date">{row.date}</div>
       </div>
-      <div className="note">NOTE</div>
+      <div className="note">{row.note}</div>
+      <hr />
     </div>
-  );
+  ));
+   
 };
 
 NotesHistoryComp.propTypes = {
-  note: PropTypes.object.isRequired,
+  notes: PropTypes.array.isRequired,
 };

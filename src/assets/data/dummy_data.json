@@ -8,9 +8,23 @@
     "inHouse": true,
     "robeCount": 5,
     "inspected": false,
-    "notes": ["this is note 1", " this is note 2", " this is note 3"],
-    "status": "response pending 1",
-    "addedAt": "2020-08-18"
+    "notes": [
+      {
+        "noteBy": "Cody",
+        "date": "06/06/21",
+        "note": "this is a test note!"
+      },
+      {
+        "noteBy": "Erick",
+        "date": "06/08/21",
+        "note": "this is a test note!"
+      },
+      {
+        "noteBy": "Mary",
+        "date": "06/02/21",
+        "note": "this is a test note!"
+      }
+    ]
   },
   {
     "id": 2,
@@ -20,10 +34,8 @@
     "rental": true,
     "inHouse": true,
     "robeCount": 0,
-    "inspected":false,
-    "notes": ["this is note 1", " this is note 2", " this is note 3"],
-    "status": "response pending 2",
-    "addedAt": "2020-08-18"
+    "inspected": false,
+    "notes": ["this is note 1", " this is note 2", " this is note 3"]
   },
   {
     "id": 3,
@@ -34,9 +46,7 @@
     "inHouse": true,
     "robeCount": 0,
     "inspected": false,
-    "notes": ["this is note 1", " this is note 2", " this is note 3"],
-    "status": "response pending 3",
-    "addedAt": "2020-08-18"
+    "notes": ["this is note 1", " this is note 2", " this is note 3"]
   },
   {
     "id": 4,
@@ -47,9 +57,8 @@
     "inHouse": true,
     "robeCount": 0,
     "inspected": true,
-    "notes": ["this is note 1", " this is note 2", " this is note 3"],
-    "status": "response pending 4",
-    "addedAt": "2020-08-18"
+    "notes": ["this is note 1", " this is note 2", " this is note 3"]
+ 
   },
   {
     "id": 5,
@@ -60,9 +69,8 @@
     "inHouse": false,
     "robeCount": 0,
     "inspected": true,
-    "notes": ["this is note 1", " this is note 2", " this is note 3"],
-    "status": "response pending 5",
-    "addedAt": "2020-08-18"
+    "notes": ["this is note 1", " this is note 2", " this is note 3"]
+    
   },
   {
     "id": 6,
@@ -73,9 +81,8 @@
     "inHouse": false,
     "robeCount": 0,
     "inspected": true,
-    "notes": ["this is note 1", " this is note 2", " this is note 3"],
-    "status": "response pending 6",
-    "addedAt": "2020-08-18"
+    "notes": ["this is note 1", " this is note 2", " this is note 3"]
+   
   },
   {
     "id": 7,
@@ -86,9 +93,8 @@
     "inHouse": false,
     "robeCount": 0,
     "inspected": true,
-    "notes": ["this is note 1", " this is note 2", " this is note 3"],
-    "status": "response pending 7",
-    "addedAt": "2020-08-18"
+    "notes": ["this is note 1", " this is note 2", " this is note 3"]
+   
   },
   {
     "id": 8,
@@ -99,9 +105,7 @@
     "inHouse": true,
     "robeCount": 4,
     "inspected": true,
-    "notes": ["this is note 1", " this is note 2", " this is note 3"],
-    "status": "response pending 8",
-    "addedAt": "2020-08-18"
+    "notes": ["this is note 1", " this is note 2", " this is note 3"]
   },
   {
     "id": 9,
@@ -112,9 +116,7 @@
     "inHouse": true,
     "robeCount": 10,
     "inspected": true,
-    "notes": ["this is note 1", " this is note 2", " this is note 3"],
-    "status": "response pending 9",
-    "addedAt": "2020-08-18"
+    "notes": ["this is note 1", " this is note 2", " this is note 3"]
   },
 
   {
@@ -126,9 +128,6 @@
     "inHouse": "false",
     "robeCount": 0,
     "inspected": true,
-    "notes": ["this is note 1", " this is note 2", " this is note 3"],
-    "status": "response pending 10",
-    "addedAt": "2020-08-18"
+    "notes": ["this is note 1", " this is note 2", " this is note 3"]
   }
 ]
-
