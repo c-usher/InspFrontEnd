@@ -1,52 +1,134 @@
 [
   {
     "id": 1,
-    "status": "response pending",
-    "addedAt": "2020-08-25"
+    "unit": 10,
+    "building": "A",
+    "managed": true,
+    "rental": true,
+    "inHouse": true,
+    "robeCount": 5,
+    "inspected": false,
+    "notes": ["this is note 1", "this is note 2", "this is note 3"],
+    "status": "response pending 1",
+    "addedAt": "2020-08-18"
   },
   {
     "id": 2,
-    "status": "response pending",
-    "addedAt": "2020-08-26"
+    "unit": 10,
+    "building": "B",
+    "managed": false,
+    "rental": true,
+    "inHouse": true,
+    "robeCount": 0,
+    "inspected":false,
+    "notes": ["this is note 1", "this is note 2", "this is note 3"],
+    "status": "response pending 2",
+    "addedAt": "2020-08-18"
   },
   {
     "id": 3,
-    "status": "jump jump",
-    "addedAt": "2020-08-27"
+    "unit": 10,
+    "building": "C",
+    "managed": false,
+    "rental": true,
+    "inHouse": true,
+    "robeCount": 0,
+    "inspected": false,
+    "notes": ["this is note 1", "this is note 2", "this is note 3"],
+    "status": "response pending 3",
+    "addedAt": "2020-08-18"
   },
   {
     "id": 4,
-    "status": "jump jump",
-    "addedAt": "2020-08-28"
+    "unit": 10,
+    "building": "A",
+    "managed": false,
+    "rental": true,
+    "inHouse": true,
+    "robeCount": 0,
+    "inspected": true,
+    "notes": ["this is note 1", "this is note 2", "this is note 3"],
+    "status": "response pending 4",
+    "addedAt": "2020-08-18"
   },
   {
     "id": 5,
-    "status": "response pending 4",
-    "addedAt": "2020-08-29"
+    "unit": 10,
+    "building": "B",
+    "managed": true,
+    "rental": false,
+    "inHouse": false,
+    "robeCount": 0,
+    "inspected": true,
+    "notes": ["this is note 1", "this is note 2", "this is note 3"],
+    "status": "response pending 5",
+    "addedAt": "2020-08-18"
   },
   {
     "id": 6,
-    "status": "response pending 5",
-    "addedAt": "2020-08-20"
+    "unit": 10,
+    "building": "C",
+    "managed": true,
+    "rental": false,
+    "inHouse": false,
+    "robeCount": 0,
+    "inspected": true,
+    "notes": ["this is note 1", "this is note 2", "this is note 3"],
+    "status": "response pending 6",
+    "addedAt": "2020-08-18"
   },
   {
     "id": 7,
-    "status": "response pending 6",
-    "addedAt": "2020-08-21"
+    "unit": 10,
+    "building": "A",
+    "managed": true,
+    "rental": false,
+    "inHouse": false,
+    "robeCount": 0,
+    "inspected": true,
+    "notes": ["this is note 1", "this is note 2", "this is note 3"],
+    "status": "response pending 7",
+    "addedAt": "2020-08-18"
   },
   {
     "id": 8,
-    "status": "response pending 6",
-    "addedAt": "2020-08-22"
+    "unit": 10,
+    "building": "B",
+    "managed": false,
+    "rental": true,
+    "inHouse": true,
+    "robeCount": 4,
+    "inspected": true,
+    "notes": ["this is note 1", "this is note 2", "this is note 3"],
+    "status": "response pending 8",
+    "addedAt": "2020-08-18"
   },
   {
     "id": 9,
-    "status": "response pending 6" ,
-    "addedAt": "2020-08-19"
+    "unit": 10,
+    "building": "C",
+    "managed": false,
+    "rental": false,
+    "inHouse": true,
+    "robeCount": 10,
+    "inspected": true,
+    "notes": ["this is note 1", "this is note 2", "this is note 3"],
+    "status": "response pending 9",
+    "addedAt": "2020-08-18"
   },
+
   {
     "id": 10,
-    "status": "response pending 6",
+    "unit": 10,
+    "building": "A",
+    "managed": "true",
+    "rental": "false",
+    "inHouse": "false",
+    "robeCount": 0,
+    "inspected": true,
+    "notes": ["this is note 1", "this is note 2", "this is note 3"],
+    "status": "response pending 10",
     "addedAt": "2020-08-18"
   }
 ]
+
