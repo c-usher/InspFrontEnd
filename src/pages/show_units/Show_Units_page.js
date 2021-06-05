@@ -16,9 +16,10 @@ export const ShowUnitsPage = () => {
     searchUnit(value);
   };
 
+  //Search by building
   const searchUnit = (input) => {
     const displayUnits = data.filter((row) =>
-      row.status.toLowerCase().includes(input.toLowerCase())
+      row.building.toLowerCase().includes(input.toLowerCase())
     );
     setDispUnit(displayUnits);
   
