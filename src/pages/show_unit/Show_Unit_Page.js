@@ -1,11 +1,23 @@
-import React from "react";
+import React, { useState, useEffect } from "react";
 import { Container, Col, Row } from "react-bootstrap";
 import units from "../../assets/data/dummy_data.json";
+import { AddNoteComp } from "../../components/add_note/Add_Note_Comp";
 import { NotesHistoryComp } from "../../components/notes_history/Notes_History_Comp";
 
 const unit = units[0];
 
 export const ShowUnitPage = () => {
+  const [newNote, setNewNote] = useState("");
+  useEffect(() => {}, [newNote]);
+
+  const handleOnChange = (e) => {
+      setNewNote(e.target.value);
+    console.log(newNote)
+  };
+    
+    const handleOnSubmit = e => {
+        alert("submitted note!")
+    }
   return (
     <Container>
       <Row>
@@ -48,6 +60,19 @@ export const ShowUnitPage = () => {
         <Col>
           <div className="notes">
             <NotesHistoryComp notes={unit.notes} />
+          </div>
+        </Col>
+      </Row>
+      <hr />
+      <Row>
+        <Col>
+          <div className="new-note-box">
+            {" "}
+            <AddNoteComp
+              notes={newNote}
+              handleOnChange={handleOnChange}
+              handleOnSubmit={handleOnSubmit}
+            />{" "}
           </div>
         </Col>
       </Row>
