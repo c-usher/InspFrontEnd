@@ -5,10 +5,10 @@ export const NotesHistoryComp = ({ note }) => {
   return (
     <div className="note-history">
       <div className="unit-note">
-        <div className="added-by"></div>
-        <div className="date"></div>
+        <div className="added-by">ADDED BY</div>
+        <div className="date">DATE</div>
       </div>
-      <div className="note"></div>
+      <div className="note">NOTE</div>
     </div>
   );
 };

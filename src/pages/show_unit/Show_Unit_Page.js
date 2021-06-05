@@ -1,8 +1,9 @@
 import React from "react";
 import { Container, Col, Row } from "react-bootstrap";
 import units from "../../assets/data/dummy_data.json";
+import { NotesHistoryComp } from "../../components/notes_history/Notes_History_Comp";
 
-const unit = units[3];
+const unit = units[0];
 
 export const ShowUnitPage = () => {
   return (
@@ -10,37 +11,38 @@ export const ShowUnitPage = () => {
       <Row>
         <Col>
           <h1 className="unit-num">Unit Number: {unit.unit}</h1>
-          <h2 className="building">Building: {unit.building}</h2>
-          <h2 className="managed">
+          <h6 className="building">Building: {unit.building}</h6>
+          <h6 className="managed">
             Managed:{" "}
             {unit.managed ? "This unit is managed" : "This unit is not managed"}
-          </h2>
-          <h2 className="rental">
+          </h6>
+          <h6 className="rental">
             Rental:{" "}
             {unit.rental
               ? "This unit is a rental"
               : "This unit is not a rental"}
-          </h2>
-          <h2 className="in-house">
+          </h6>
+          <h6 className="in-house">
             In House:{" "}
             {unit.inHouse
               ? "This unit is in house"
               : "This unit is not in house"}
-          </h2>
-          <h2 className="robe-count">Robes: {unit.robeCount}</h2>
-          <h2 className="inspected">
+          </h6>
+          <h6 className="robe-count">Robes: {unit.robeCount}</h6>
+          <h6 className="inspected">
             Inspected:{" "}
             {unit.inspected
               ? "This unit is inspected"
               : "This unit is not inspected"}
-          </h2>
-          <h2 className="notes">Notes: {unit.notes}</h2>
-          {/*  ! remove this \/ */}
-          <hr />
-          <br />
-          <br />
-          <h1>{JSON.stringify(unit)}</h1>
-          {/* ! remove this /\ */}
+          </h6>
+          <h6 className="notes">Notes: {unit.notes}</h6>
+        </Col>
+          </Row>
+          < hr />
+          <h1> Notes History for {unit.building}{unit.unit}</h1>
+      <Row>
+        <Col>
+          <NotesHistoryComp />
         </Col>
       </Row>
     </Container>
