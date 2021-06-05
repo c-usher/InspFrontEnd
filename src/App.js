@@ -4,7 +4,7 @@ import { ShowUnitPage } from './pages/show_unit/Show_Unit_Page';
 // import { Dashboard } from './pages/dashboard/dashboard_page';
 // import { LoginPage } from './pages/login/Login_Page'
 // import { AddUnit } from './pages/new-unit/Add_Unit_page';
-import { ShowUnitsPage } from './pages/show_units/Show_Units_Page';
+// import { ShowUnitsPage } from './pages/show_units/Show_Units_Page';
 
 
 function App() {
@@ -14,8 +14,8 @@ function App() {
       <DefaultLayout>
         {/* <Dashboard /> */}
       {/* <AddUnit /> */}
-        <ShowUnitsPage />
-       {/* <ShowUnitPage /> */}
+        {/* <ShowUnitsPage /> */}
+       <ShowUnitPage />
      </DefaultLayout>
     </div>
   );
