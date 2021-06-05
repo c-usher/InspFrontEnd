@@ -35,7 +35,6 @@ export const ShowUnitPage = () => {
               ? "This unit is inspected"
               : "This unit is not inspected"}
           </h6>
-          {/* <h6 className="notes">Notes: {unit.notes}</h6> */}
         </Col>
       </Row>
       <hr />
@@ -47,7 +46,9 @@ export const ShowUnitPage = () => {
       <hr />
       <Row>
         <Col>
-          <NotesHistoryComp notes={unit.notes} />
+          <div className="notes">
+            <NotesHistoryComp notes={unit.notes} />
+          </div>
         </Col>
       </Row>
     </Container>
