@@ -1,3 +1,5 @@
+import React from "react";
+import { BrowserRouter as Router, Switch, Route, Link } from "react-router-dom";
 import "./App.css";
 import { DefaultLayout } from "./layout/Default_Layout";
 import { ShowUnitPage } from "./pages/show_unit/Show_Unit_Page";
@@ -9,13 +11,27 @@ import { ShowUnitsPage } from "./pages/show_units/Show_Units_Page";
 function App() {
   return (
     <div className="App">
-      <LoginPage />
-      <DefaultLayout>
-        <Dashboard />
-        <AddUnit />
-        <ShowUnitsPage />
-        <ShowUnitPage />
-      </DefaultLayout>
+      <Router>
+        <Switch>
+          <Route exact path="/">
+            <LoginPage />
+          </Route>
+          <DefaultLayout>
+            <Route path="/dashboard">
+              <Dashboard />
+            </Route>
+            <Route path="/add-unit">
+              <AddUnit />
+            </Route>
+            <Route path="/units">
+              <ShowUnitsPage />
+            </Route>
+            <Route path="/unit/:uid">
+              <ShowUnitPage />
+            </Route>
+          </DefaultLayout>
+        </Switch>
+      </Router>
     </div>
   );
 }
