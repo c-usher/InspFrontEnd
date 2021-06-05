@@ -35,7 +35,7 @@ export const ShowUnitPage = () => {
               : "This unit is not inspected"}
           </h2>
           <h2 className="notes">Notes: {unit.notes}</h2>
-          {/* ! remove this \/ */}
+          {/*  ! remove this \/ */}
           <hr />
           <br />
           <br />
