@@ -123,9 +123,9 @@
     "id": 10,
     "unit": 10,
     "building": "A",
-    "managed": "true",
-    "rental": "false",
-    "inHouse": "false",
+    "managed": true,
+    "rental": true,
+    "inHouse": false,
     "robeCount": 0,
     "inspected": true,
     "notes": ["this is note 1", " this is note 2", " this is note 3"]

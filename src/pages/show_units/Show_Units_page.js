@@ -2,11 +2,11 @@ import React, { useState, useEffect } from "react";
 import { Row, Col, Container, Button } from "react-bootstrap";
 import { SearchComp } from "../../components/search/Search_Comp";
 import { UnitTable } from "../../components/units_table/Unit_Table_Comp";
-import data from "../../assets/data/dummy_data.json";
+import units from "../../assets/data/dummy_data.json";
 
 export const ShowUnitsPage = () => {
   const [str, setStr] = useState("");
-  const [dispUnit, setDispUnit] = useState(data);
+  const [dispUnit, setDispUnit] = useState(units);
   useEffect(() => {
   }, [str, dispUnit]);
 
@@ -18,7 +18,7 @@ export const ShowUnitsPage = () => {
 
   //Search by building
   const searchUnit = (input) => {
-    const displayUnits = data.filter((row) =>
+    const displayUnits = units.filter((row) =>
       row.building.toLowerCase().includes(input.toLowerCase())
     );
     setDispUnit(displayUnits);
@@ -37,7 +37,7 @@ export const ShowUnitsPage = () => {
       <hr />
       <Row>
         <Col>
-          <UnitTable data={dispUnit} />
+          <UnitTable units={dispUnit} />
         </Col>
       </Row>
     </Container>

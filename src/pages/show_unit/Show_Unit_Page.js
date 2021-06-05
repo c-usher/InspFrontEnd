@@ -40,7 +40,7 @@ export const ShowUnitPage = () => {
               ? "This unit is in house"
               : "This unit is not in house"}
           </h6>
-          <h6 className="robe-count">Robes: {unit.robeCount}</h6>
+          <h6 className="robe-count">Robes: {unit.rental?unit.robeCount:"Not a Rental"}</h6>
           <h6 className="inspected">
             Inspected:{" "}
             {unit.inspected

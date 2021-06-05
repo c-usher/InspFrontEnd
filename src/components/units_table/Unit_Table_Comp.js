@@ -2,7 +2,7 @@ import React from "react";
 import { Table } from "react-bootstrap";
 import { PropTypes } from "prop-types";
 
-export const UnitTable = ({ data }) => {
+export const UnitTable = ({ units }) => {
  
   return (
     <Table striped bordered hover>
@@ -15,22 +15,21 @@ export const UnitTable = ({ data }) => {
           <th>In House</th>
           <th>Robe Count</th>
           <th>Inspected</th>
-          <th>Notes</th>
+        
           
         </tr>
       </thead>
       <tbody>
-        {data.length ? (
-          data.map((row) => (
+        {units.length ? (
+          units.map((row) => (
             <tr key={row.id}>
               <td>{row.unit}</td>
               <td>{row.building}</td>
-              <td>{row.managed}</td>
-              <td>{row.rental}</td>
-              <td>{row.inHouse}</td>
-              <td>{row.robeCount}</td>
-              <td>{row.inspected}</td>
-              <td>{row.notes}</td>
+              <td>{row.managed ? "Managed" : "Not Managed" }</td>
+              <td>{row.rental ? "Rental" : "Not a Rental"}</td>
+              <td>{row.inHouse ? "In House": "Not In House"}</td>
+              <td>{row.rental ? row.robeCount : "Not a Rental"}</td>
+              <td>{row.inspected ? "Inspected" : "Not Inspected"}</td>
             </tr>
           ))
         ) : (
@@ -46,5 +45,5 @@ export const UnitTable = ({ data }) => {
 };
 
 UnitTable.propTypes = {
-  data: PropTypes.array.isRequired,
+  units: PropTypes.array.isRequired,
 };
