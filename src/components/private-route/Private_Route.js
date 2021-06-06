@@ -4,5 +4,16 @@ import { DefaultLayout } from "../../layout/Default_Layout";
 
 const isValid = true;
 export const PrivateRoute = ({ children, ...rest }) => {
-  return <Route render={() => (isValid ?  <DefaultLayout>{children} </DefaultLayout>: <Redirect to="/" />)} />;
+  return (
+    <Route
+      {...rest}
+      render={() =>
+        isValid ? (
+          <DefaultLayout>{children} </DefaultLayout>
+        ) : (
+          <Redirect to="/" />
+        )
+      }
+    />
+  );
 };

@@ -25,7 +25,7 @@ function App() {
           <PrivateRoute path="/units">
             <ShowUnitsPage />
           </PrivateRoute>
-          <PrivateRoute path="/unit/:uid">
+          <PrivateRoute path="/unit/:uId">
             <ShowUnitPage />
           </PrivateRoute>
         </Switch>
