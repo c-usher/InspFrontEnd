@@ -69,11 +69,7 @@ export const ShowUnitPage = () => {
       </h1>
       <hr />
       <Row>
-        <Col>
-          <div className="notes">
-            <NotesHistoryComp notes={unit.notes} />
-          </div>
-        </Col>
+        <Col>{unit.notes && <NotesHistoryComp notes={unit.notes} />}</Col>
       </Row>
       <hr />
       <Row>
