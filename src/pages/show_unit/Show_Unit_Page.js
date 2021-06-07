@@ -36,11 +36,11 @@ export const ShowUnitPage = () => {
           <h1 className="unit-num">Unit Number: {unit.unit}</h1>
           <h6 className="building">Building: {unit.building}</h6>
           <h6 className="managed">
-            Managed:{" "}
+            Managed:
             {unit.managed ? "This unit is managed" : "This unit is not managed"}
           </h6>
           <h6 className="rental">
-            Rental:{" "}
+            Rental:
             {unit.rental
               ? "This unit is a rental"
               : "This unit is not a rental"}
@@ -86,14 +86,3 @@ export const ShowUnitPage = () => {
     </Container>
   );
 };
-
-//        ! REMOVE THIS \/
-/*        <th>Unit Number</th>
-          <th>Building</th>
-          <th>Managed</th>
-          <th>Rental</th>
-          <th>In House</th>
-          <th>Robe Count</th>
-          <th>Inspected</th>
-          <th>Notes</th> 
-*/
