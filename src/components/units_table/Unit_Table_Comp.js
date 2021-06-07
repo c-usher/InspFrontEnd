@@ -20,12 +20,13 @@ export const UnitTable = ({ units }) => {
         {units.length ? (
           units.map((row) => (
             <tr key={row.id}>
-              <Link to={`/unit/${row.id}`}>
-                <td>
+              <td>
+                <Link to={`/unit/${row.id}`}>
                   {row.building}
                   {row.unit}
-                </td>
-              </Link>
+                </Link>
+              </td>
+
               <td>{row.managed ? "Managed" : "Not Managed"}</td>
               <td>{row.rental ? "Rental" : "Not a Rental"}</td>
               <td>{row.inHouse ? "In House" : "Not In House"}</td>
