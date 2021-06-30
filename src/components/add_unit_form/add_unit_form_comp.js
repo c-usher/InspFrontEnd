@@ -41,7 +41,7 @@ export const AddUnitForm = ({
           <Col sm={9}>
             <Form.Control
               name="buildingLetter"
-               minLength="1"
+              minLength="1"
               maxLength="1"
               value={formData.buildingLetter}
               onChange={handleOnChange}
@@ -69,8 +69,7 @@ export const AddUnitForm = ({
               required
             />
             <Form.Text className="text-danger">
-              {formDataError.notes &&
-                "Notes do not meet prerequisite!"}
+              {formDataError.notes && "Notes do not meet prerequisite!"}
             </Form.Text>
           </Col>
         </Form.Group>

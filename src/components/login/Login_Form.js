@@ -37,7 +37,7 @@ export const LoginForm = ({
         />
         <br />
         <button type="submit" value="Submit">
-         Log In
+          Log In
         </button>
         <hr />
         <a href="#!" onClick={() => formSwitch("reset")}>

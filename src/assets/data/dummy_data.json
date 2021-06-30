@@ -58,7 +58,6 @@
     "robeCount": 0,
     "inspected": true,
     "notes": ["this is note 1", " this is note 2", " this is note 3"]
- 
   },
   {
     "id": 5,
@@ -70,7 +69,6 @@
     "robeCount": 0,
     "inspected": true,
     "notes": ["this is note 1", " this is note 2", " this is note 3"]
-    
   },
   {
     "id": 6,
@@ -82,7 +80,6 @@
     "robeCount": 0,
     "inspected": true,
     "notes": ["this is note 1", " this is note 2", " this is note 3"]
-   
   },
   {
     "id": 7,
@@ -94,7 +91,6 @@
     "robeCount": 0,
     "inspected": true,
     "notes": ["this is note 1", " this is note 2", " this is note 3"]
-   
   },
   {
     "id": 8,

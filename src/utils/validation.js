@@ -1,5 +1,5 @@
-export const unitNumCheck = str => {
-    return str.length === 3
+export const unitNumCheck = (str) => {
+  return str.length === 3;
 };
 
 export const buildingCheck = (str) => {
@@ -7,5 +7,5 @@ export const buildingCheck = (str) => {
 };
 
 export const notesCheck = (str) => {
-  return str.length >= 1 && str.length <=300;
+  return str.length >= 1 && str.length <= 300;
 };

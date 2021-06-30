@@ -24,7 +24,9 @@ export const PasswordResetForm = ({
           required
         />
         <br />
-        <button type="submit" value="Submit">Reset Password</button>
+        <button type="submit" value="Submit">
+          Reset Password
+        </button>
         <hr />
         <a href="#!" onClick={() => formSwitch("login")}>
           Back To Log In

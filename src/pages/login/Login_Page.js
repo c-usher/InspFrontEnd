@@ -30,16 +30,14 @@ export const LoginPage = () => {
     }
     console.log(username, pass);
   };
-   
+
   const handleOnResetSubmit = (e) => {
-      e.preventDefault();
-      if (!username) {
-        return alert("Please enter your username!");
-      }
-      console.log(username);
-    };
-
-
+    e.preventDefault();
+    if (!username) {
+      return alert("Please enter your username!");
+    }
+    console.log(username);
+  };
 
   const formSwitch = (e) => {
     setFormLoad(e);

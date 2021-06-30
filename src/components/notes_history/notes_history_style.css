@@ -1,12 +1,12 @@
-.note-history{
-    display: flex;
-    flex-direction: row;
-    justify-content: space-between;
+.note-history {
+  display: flex;
+  flex-direction: row;
+  justify-content: space-between;
 }
 
 .note {
-    padding: 1rem;
-    width: 80%;
-    border: 1px solid whitesmoke;
-    border-radius: 0.25rem;
+  padding: 1rem;
+  width: 80%;
+  border: 1px solid whitesmoke;
+  border-radius: 0.25rem;
 }
