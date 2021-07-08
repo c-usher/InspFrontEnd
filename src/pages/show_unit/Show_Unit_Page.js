@@ -33,8 +33,7 @@ export const ShowUnitPage = () => {
     <Container>
       <Row>
         <Col>
-          <h1 className="unit-num">Unit Number: {unit.unit}</h1>
-          <h6 className="building">Building: {unit.building}</h6>
+          <h1 className="unit-num">Unit Number: {unit.unitNum}</h1>
           <h6 className="managed">
             Managed:
             {unit.managed ? "This unit is managed" : "This unit is not managed"}

@@ -1,9 +1,13 @@
 import React from "react";
 import { Table } from "react-bootstrap";
-import { PropTypes } from "prop-types";
 import { Link } from "react-router-dom";
+import { useSelector } from "react-redux";
 
-export const UnitTable = ({ units }) => {
+export const UnitTable = () => {
+  const { units, isLoading, error } = useSelector((state) => state.units);
+
+  if (isLoading) return <h3>Loading ...</h3>;
+  if (error) return <h3>{error}</h3>;
   return (
     <Table striped bordered hover>
       <thead>
@@ -21,10 +25,7 @@ export const UnitTable = ({ units }) => {
           units.map((row) => (
             <tr key={row.id}>
               <td>
-                <Link to={`/unit/${row.id}`}>
-                  {row.building}
-                  {row.unit}
-                </Link>
+                <Link to={`/unit/${row.id}`}>{row.unitNum}</Link>
               </td>
 
               <td>{row.managed ? "Managed" : "Not Managed"}</td>
@@ -44,8 +45,4 @@ export const UnitTable = ({ units }) => {
       </tbody>
     </Table>
   );
-};
-
-UnitTable.propTypes = {
-  units: PropTypes.array.isRequired,
 };

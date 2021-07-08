@@ -1,20 +1,26 @@
 import React from "react";
+import { useDispatch } from "react-redux";
+import { filterSearchUnit } from "../../pages/show_units/unitsAction";
 import { Form, Row, Col } from "react-bootstrap";
-import { PropTypes } from "prop-types";
 
-export const SearchComp = ({ handleOnChange, str }) => {
+export const SearchComp = () => {
+  const dispatch = useDispatch();
+
+  const handleOnChange = (e) => {
+    const { value } = e.target;
+    dispatch(filterSearchUnit(value));
+  };
   return (
     <div>
       <Form>
         <Form.Group as={Row}>
           <Form.Label column sm="3">
-            Search:{" "}
+            Search:
           </Form.Label>
           <Col sm="9">
             <Form.Control
               name="searchStr"
               onChange={handleOnChange}
-              value={str}
               placeholder="Search..."
             />
           </Col>
@@ -22,9 +28,4 @@ export const SearchComp = ({ handleOnChange, str }) => {
       </Form>
     </div>
   );
-};
-
-SearchComp.propTypes = {
-  handleOnChange: PropTypes.func.isRequired,
-  str: PropTypes.string.isRequired,
 };
