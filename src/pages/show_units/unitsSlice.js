@@ -27,7 +27,7 @@ const showUnitsSlice = createSlice({
       state.searchUnitList = state.units.filter((row) => {
         if (!payload) return row;
 
-        return row.subject.toLowerCase().includes(payload.toLowerCase());
+        return row.unitNum.toLowerCase().includes(payload.toLowerCase());
       });
     },
   },

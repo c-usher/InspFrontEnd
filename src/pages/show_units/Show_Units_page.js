@@ -1,4 +1,4 @@
-import React, { useState, useEffect } from "react";
+import React, { useEffect } from "react";
 import { useDispatch } from "react-redux";
 import { fetchAllUnits } from "./unitsAction";
 import { Row, Col, Container, Button } from "react-bootstrap";
@@ -8,10 +8,10 @@ import { Link } from "react-router-dom";
 
 export const ShowUnitsPage = () => {
   const dispatch = useDispatch();
-  const [str, setStr] = useState("");
+
   useEffect(() => {
     dispatch(fetchAllUnits());
-  }, [str, dispatch]);
+  }, [dispatch]);
 
   return (
     <Container>

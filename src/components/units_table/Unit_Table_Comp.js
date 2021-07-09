@@ -4,7 +4,9 @@ import { Link } from "react-router-dom";
 import { useSelector } from "react-redux";
 
 export const UnitTable = () => {
-  const { units, isLoading, error } = useSelector((state) => state.units);
+  const { searchUnitList, isLoading, error } = useSelector(
+    (state) => state.units
+  );
 
   if (isLoading) return <h3>Loading ...</h3>;
   if (error) return <h3>{error}</h3>;
@@ -21,11 +23,11 @@ export const UnitTable = () => {
         </tr>
       </thead>
       <tbody>
-        {units.length ? (
-          units.map((row) => (
-            <tr key={row.id}>
+        {searchUnitList.length ? (
+          searchUnitList.map((row) => (
+            <tr key={row._id}>
               <td>
-                <Link to={`/unit/${row.id}`}>{row.unitNum}</Link>
+                <Link to={`/unit/${row._id}`}>{row.unitNum}</Link>
               </td>
 
               <td>{row.managed ? "Managed" : "Not Managed"}</td>
