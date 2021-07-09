@@ -1,8 +1,14 @@
 import React, { useState } from "react";
+import { useDispatch, useSelector } from "react-redux";
 import propTypes from "prop-types";
+import { Spinner, Alert } from "react-bootstrap";
+import { loginPending, loginSuccess, loginFail } from "./loginSlice";
 
 // TODO: -----> STYLE THIS PAGE <------
 export const LoginForm = ({ formSwitch }) => {
+  const dispatch = useDispatch();
+  const { isLoading, isAuth, error } = useSelector((state) => state.login);
+
   const [username, setUsername] = useState("");
   const [pass, setPass] = useState("");
 
@@ -26,12 +32,13 @@ export const LoginForm = ({ formSwitch }) => {
     if (!username || !pass) {
       return alert("Enter All Info Please");
     }
-    console.log(username, pass);
+    dispatch(loginPending());
   };
   return (
     <div>
       <h1>User Login</h1>
       <hr />
+      {error && <Alert variant="danger">{error}</Alert>}
       <form autoComplete="off" onSubmit={handleOnSubmit}>
         <label htmlFor="username">User Name</label>
         <input
@@ -58,6 +65,7 @@ export const LoginForm = ({ formSwitch }) => {
         <button type="submit" value="Submit">
           Log In
         </button>
+        {isLoading && <Spinner variant="primary" animation="border" />}
         <hr />
         <a href="#!" onClick={() => formSwitch("reset")}>
           Forget Password?
