@@ -1,14 +1,33 @@
-import React from "react";
+import React, { useState } from "react";
 import propTypes from "prop-types";
 
 // TODO: -----> STYLE THIS PAGE <------
-export const LoginForm = ({
-  handleOnChange,
-  handleOnSubmit,
-  formSwitch,
-  username,
-  pass,
-}) => {
+export const LoginForm = ({ formSwitch }) => {
+  const [username, setUsername] = useState("");
+  const [pass, setPass] = useState("");
+
+  const handleOnChange = (e) => {
+    const { name, value } = e.target;
+
+    switch (name) {
+      case "username":
+        setUsername(value);
+        break;
+      case "pass":
+        setPass(value);
+        break;
+      default:
+        break;
+    }
+  };
+
+  const handleOnSubmit = (e) => {
+    e.preventDefault();
+    if (!username || !pass) {
+      return alert("Enter All Info Please");
+    }
+    console.log(username, pass);
+  };
   return (
     <div>
       <h1>User Login</h1>
@@ -49,9 +68,5 @@ export const LoginForm = ({
 };
 
 LoginForm.propTypes = {
-  handleOnChange: propTypes.func.isRequired,
-  handleOnSubmit: propTypes.func.isRequired,
   formSwitch: propTypes.func.isRequired,
-  username: propTypes.string.isRequired,
-  pass: propTypes.string.isRequired,
 };
