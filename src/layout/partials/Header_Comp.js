@@ -6,6 +6,7 @@ import { useHistory } from "react-router-dom";
 export const Header = () => {
   const history = useHistory();
   const logMeOut = () => {
+    sessionStorage.removeItem("accessJWT");
     history.push("/");
   };
   return (

@@ -2,7 +2,7 @@ import React from "react";
 import { BrowserRouter as Router, Switch, Route } from "react-router-dom";
 import "./App.css";
 import { ShowUnitPage } from "./pages/show_unit/Show_Unit_Page";
-import { Dashboard } from "./pages/dashboard/dashboard_page";
+import { Dashboard } from "./pages/dashboard/Dashboard_page";
 import { LoginPage } from "./pages/login/Login_Page";
 import { AddUnit } from "./pages/new-unit/Add_Unit_page";
 import { ShowUnitsPage } from "./pages/show_units/Show_Units_Page";

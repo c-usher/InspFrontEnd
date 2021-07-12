@@ -13,6 +13,7 @@ import {
 import { useHistory } from "react-router-dom";
 import { loginPending, loginSuccess, loginFail } from "./loginSlice";
 import { userLogin } from "../../api/userApi";
+import { getUserProfile } from "../../pages/dashboard/userAction";
 
 // TODO: -----> STYLE THIS PAGE <------
 export const LoginForm = ({ formSwitch }) => {
@@ -51,6 +52,7 @@ export const LoginForm = ({ formSwitch }) => {
         return dispatch(loginFail(isAuth.message));
       }
       dispatch(loginSuccess());
+      dispatch(getUserProfile());
       history.push("/dashboard");
     } catch (error) {
       dispatch(loginFail(error.message));
@@ -104,47 +106,6 @@ export const LoginForm = ({ formSwitch }) => {
     </Container>
   );
 };
-
-//   return (
-//     <div>
-//       <h1>User Login</h1>
-//       <hr />
-//       {error && <Alert variant="danger">{error}</Alert>}
-//       <form autoComplete="off" onSubmit={handleOnSubmit}>
-//         <label htmlFor="email">User Name</label>
-//         <input
-//           type="text"
-//           id="email"
-//           name="email"
-//           value={email}
-//           onChange={handleOnChange}
-//           placeholder="Enter email"
-//           required
-//         />
-//         <br />
-//         <label htmlFor="password">Password</label>
-//         <input
-//           type="text"
-//           id="password"
-//           name="password"
-//           value={password}
-//           onChange={handleOnChange}
-//           placeholder="Enter Password"
-//           required
-//         />
-//         <br />
-//         <button type="submit" value="Submit">
-//           Log In
-//         </button>
-//         {isLoading && <Spinner variant="primary" animation="border" />}
-//         <hr />
-//         <a href="#!" onClick={() => formSwitch("reset")}>
-//           Forget Password?
-//         </a>
-//       </form>
-//     </div>
-//   );
-// };
 
 LoginForm.propTypes = {
   formSwitch: propTypes.func.isRequired,

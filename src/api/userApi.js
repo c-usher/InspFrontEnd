@@ -1,6 +1,8 @@
 import axios from "axios";
 
-const loginUrl = "http://localhost:3001/user/login";
+const rootUrl = "http://localhost:3001";
+const loginUrl = `${rootUrl}/user/login`;
+const userProfUrl = `${rootUrl}/user`;
 export const userLogin = (formData) => {
   return new Promise(async (resolve, reject) => {
     try {
@@ -20,4 +22,33 @@ export const userLogin = (formData) => {
       reject(error);
     }
   });
+};
+
+export const fetchUser = () => {
+  return new Promise(async (resolve, reject) => {
+    try {
+      const accessJWT = sessionStorage.getItem("accessJWT");
+      console.log(accessJWT);
+      if (!accessJWT) {
+        reject("Token not found!");
+      }
+      const res = await axios.get(userProfUrl, {
+        headers: {
+          Authorization: accessJWT,
+        },
+      });
+      console.log(res);
+      resolve(res.data);
+    } catch (error) {
+      console.log(error);
+      reject(error.message);
+    }
+  });
+};
+
+export const userLogout = () => {
+  try {
+  } catch (error) {
+    console.log(error);
+  }
 };
