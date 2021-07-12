@@ -2,6 +2,7 @@ import axios from "axios";
 
 const rootUrl = "http://localhost:3001";
 const loginUrl = `${rootUrl}/user/login`;
+const logoutUrl = `${rootUrl}/user/logout`;
 const userProfUrl = `${rootUrl}/user`;
 export const userLogin = (formData) => {
   return new Promise(async (resolve, reject) => {
@@ -28,7 +29,6 @@ export const fetchUser = () => {
   return new Promise(async (resolve, reject) => {
     try {
       const accessJWT = sessionStorage.getItem("accessJWT");
-      console.log(accessJWT);
       if (!accessJWT) {
         reject("Token not found!");
       }
@@ -37,7 +37,6 @@ export const fetchUser = () => {
           Authorization: accessJWT,
         },
       });
-      console.log(res);
       resolve(res.data);
     } catch (error) {
       console.log(error);
@@ -46,8 +45,13 @@ export const fetchUser = () => {
   });
 };
 
-export const userLogout = () => {
+export const userLogout = async () => {
   try {
+    await axios.delete(logoutUrl, {
+      headers: {
+        Authorization: sessionStorage.getItem("accessJWT"),
+      },
+    });
   } catch (error) {
     console.log(error);
   }
