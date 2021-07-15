@@ -9,6 +9,7 @@ export const Header = () => {
     sessionStorage.removeItem("accessJWT");
     history.push("/");
   };
+
   return (
     <Navbar collapseOnSelect bg="info" variant="dark" expand="md">
       <Navbar.Brand>Test</Navbar.Brand>
