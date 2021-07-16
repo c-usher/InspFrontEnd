@@ -56,10 +56,9 @@ export const fetchNewAccessJWT = () => {
       }
       const res = await axios.get(newAccessJWT, {
         headers: {
-          Authorization: "refreshJWT",
+          Authorization: refreshJWT,
         },
       });
-
       if (res.data.status === "success") {
         sessionStorage.setItem("accessJWT", res.data.accessJWT);
       }

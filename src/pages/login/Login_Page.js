@@ -6,10 +6,6 @@ import "./login_page_style.css";
 export const LoginPage = () => {
   const [formLoad, setFormLoad] = useState("login");
 
-  const handleOnResetSubmit = (e) => {
-    e.preventDefault();
-  };
-
   const formSwitch = (e) => {
     setFormLoad(e);
   };
