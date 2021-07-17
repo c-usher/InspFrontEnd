@@ -78,7 +78,7 @@ export const ShowUnitPage = () => {
       </Row>
       <br />
       <hr />
-      <h1>Notes History for {selectedUnit.unitNum}</h1>
+      <h1>Notes:</h1>
       <hr />
       <Row>
         <Col>
@@ -87,6 +87,22 @@ export const ShowUnitPage = () => {
           )}
         </Col>
       </Row>
+      <hr />
+      <Row>
+        <Col>
+          <div className="new-note-box">
+            <AddNoteComp
+              notes={newNote}
+              handleOnChange={handleOnChange}
+              handleOnSubmit={handleOnSubmit}
+            />
+          </div>
+        </Col>
+      </Row>
+      <br />
+      <hr />
+      <h1>Owner Preferences:</h1>
+      <hr />
       <Row>
         <Col>
           {selectedUnit.ownerPrefs && (
@@ -97,7 +113,7 @@ export const ShowUnitPage = () => {
       <hr />
       <Row>
         <Col>
-          <div className="new-note-box">
+          <div className="new-prefs-box">
             <AddNoteComp
               notes={newNote}
               handleOnChange={handleOnChange}
