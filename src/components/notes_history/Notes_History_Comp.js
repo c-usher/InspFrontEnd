@@ -7,10 +7,11 @@ export const NotesHistoryComp = ({ notes }) => {
   return notes.map((row, i) => (
     <div className="note-history mt-3" key={i}>
       <div className="unit-note ">
-        <div className="note-by">{row.noteBy}</div>
-        <div className="date">{row.date}</div>
+        <div className="note-by">{row.noteAddedBy}</div>
+        <div className="date">{row.noteAddedAt}</div>
       </div>
       <div className="note">{row.note}</div>
+      <div className="noteStatus">{row.noteStatus}</div>
       <Button variant="info">Remove Note</Button>
     </div>
   ));

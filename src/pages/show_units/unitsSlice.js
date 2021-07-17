@@ -5,6 +5,7 @@ const initialState = {
   isLoading: false,
   error: "",
   searchUnitList: [],
+  selectedUnit: {},
 };
 
 const showUnitsSlice = createSlice({
@@ -30,6 +31,18 @@ const showUnitsSlice = createSlice({
         return row.unitNum.toLowerCase().includes(payload.toLowerCase());
       });
     },
+    fetchUnitLoading: (state) => {
+      state.isLoading = true;
+    },
+    fetchUnitSuccess: (state, { payload }) => {
+      state.selectedUnit = payload;
+      state.isLoading = false;
+      state.error = "";
+    },
+    fetchUnitFail: (state, { payload }) => {
+      state.isLoading = false;
+      state.error = payload;
+    },
   },
 });
 
@@ -40,6 +53,9 @@ export const {
   fetchUnitsSuccess,
   fetchUnitsFail,
   searchUnits,
+  fetchUnitLoading,
+  fetchUnitSuccess,
+  fetchUnitFail,
 } = actions;
 
 export default reducer;

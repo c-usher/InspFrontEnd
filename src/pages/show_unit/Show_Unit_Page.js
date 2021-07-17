@@ -1,25 +1,23 @@
 import React, { useState, useEffect } from "react";
-import { Container, Col, Row } from "react-bootstrap";
-import units from "../../assets/data/dummy_data.json";
+import { useDispatch, useSelector } from "react-redux";
+import { Container, Col, Row, Spinner, Alert } from "react-bootstrap";
 import { AddNoteComp } from "../../components/add_note/Add_Note_Comp";
 import { NotesHistoryComp } from "../../components/notes_history/Notes_History_Comp";
 import { useParams } from "react-router-dom";
-
-// const unit = units[0];
+import { fetchUnit } from "../show_units/unitsAction";
 
 export const ShowUnitPage = () => {
   const { uId } = useParams();
   const [newNote, setNewNote] = useState("");
-  const [unit, setUnit] = useState("");
+  const dispatch = useDispatch();
+  const { isLoading, error, selectedUnit } = useSelector(
+    (state) => state.units
+  );
+  // const [unit, setUnit] = useState("");
 
   useEffect(() => {
-    for (let i = 0; i < units.length; i++) {
-      if (units[i].id == uId) {
-        setUnit(units[i]);
-        continue;
-      }
-    }
-  }, [newNote, uId]);
+    dispatch(fetchUnit(uId));
+  }, [newNote, uId, dispatch]);
 
   const handleOnChange = (e) => {
     setNewNote(e.target.value);
@@ -33,42 +31,68 @@ export const ShowUnitPage = () => {
     <Container>
       <Row>
         <Col>
-          <h1 className="unit-num">Unit Number: {unit.unitNum}</h1>
+          {isLoading && <Spinner variant="primary" animation="border" />}
+          {error && <Alert variant="danger">{error}</Alert>}
+        </Col>
+      </Row>
+      <Row>
+        <Col>
+          <hr />
+          <h1 className="unit-num">Unit Number: {selectedUnit.unitNum}</h1>
+          <hr />
           <h6 className="managed">
             Managed:
-            {unit.managed ? "This unit is managed" : "This unit is not managed"}
+            {selectedUnit.managedStatus
+              ? " This unit is managed"
+              : " This unit is not managed"}
           </h6>
           <h6 className="rental">
             Rental:
-            {unit.rental
-              ? "This unit is a rental"
-              : "This unit is not a rental"}
+            {selectedUnit.rentalStatus
+              ? " This unit is a rental"
+              : " This unit is not a rental"}
           </h6>
           <h6 className="in-house">
             In House:{" "}
-            {unit.inHouse
-              ? "This unit is in house"
-              : "This unit is not in house"}
+            {selectedUnit.inHouseStatus
+              ? " This unit is in house"
+              : " This unit is not in house"}
           </h6>
           <h6 className="robe-count">
-            Robes: {unit.rental ? unit.robeCount : "Not a Rental"}
+            Robes:{" "}
+            {selectedUnit.rental ? selectedUnit.robeCount : " Not a Rental"}
           </h6>
           <h6 className="inspected">
             Inspected:
-            {unit.inspected
-              ? "This unit is inspected"
-              : "This unit is not inspected"}
+            {selectedUnit.inspected
+              ? " This unit is inspected"
+              : " This unit is not inspected"}
+          </h6>
+          <h6 className="cleaned">
+            Cleaned:
+            {selectedUnit.cleanStatus
+              ? " This unit is clean"
+              : " This unit is not clean"}
           </h6>
         </Col>
       </Row>
+      <br />
       <hr />
-      <h1>
-        Notes History for {unit.building}
-        {unit.unit}
-      </h1>
+      <h1>Notes History for {selectedUnit.unitNum}</h1>
       <hr />
       <Row>
-        <Col>{unit.notes && <NotesHistoryComp notes={unit.notes} />}</Col>
+        <Col>
+          {selectedUnit.notes && (
+            <NotesHistoryComp notes={selectedUnit.notes} />
+          )}
+        </Col>
+      </Row>
+      <Row>
+        <Col>
+          {selectedUnit.ownerPrefs && (
+            <NotesHistoryComp notes={selectedUnit.ownerPrefs} />
+          )}
+        </Col>
       </Row>
       <hr />
       <Row>
@@ -85,3 +109,15 @@ export const ShowUnitPage = () => {
     </Container>
   );
 };
+
+/* 
+
+cleanStatus(pin):true < DONE
+inHouseStatus(pin):true < DONE
+managedStatus(pin):true < DONE
+rentalStatus(pin):true < DONE
+unitNum(pin):"A901" < DONE
+ownerPrefs: [] 
+notes: []
+
+*/
