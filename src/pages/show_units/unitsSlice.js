@@ -6,6 +6,7 @@ const initialState = {
   error: "",
   searchUnitList: [],
   selectedUnit: {},
+  newNote: "",
 };
 
 const showUnitsSlice = createSlice({
@@ -43,6 +44,18 @@ const showUnitsSlice = createSlice({
       state.isLoading = false;
       state.error = payload;
     },
+    addNoteLoading: (state) => {
+      state.isLoading = true;
+    },
+    addNoteSuccess: (state, { payload }) => {
+      state.isLoading = false;
+      state.newNote = payload;
+      state.error = "";
+    },
+    addNoteFail: (state, { payload }) => {
+      state.isLoading = false;
+      state.error = payload;
+    },
   },
 });
 
@@ -56,6 +69,9 @@ export const {
   fetchUnitLoading,
   fetchUnitSuccess,
   fetchUnitFail,
+  addNoteLoading,
+  addNoteSuccess,
+  addNoteFail,
 } = actions;
 
 export default reducer;

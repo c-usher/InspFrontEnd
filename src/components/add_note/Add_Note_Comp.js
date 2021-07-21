@@ -1,15 +1,35 @@
-import React from "react";
+import React, { useState } from "react";
 import { Form, Button } from "react-bootstrap";
+import { useSelector, useDispatch } from "react-redux";
+import { addNewNote } from "../../pages/show_units/unitsAction";
 import PropTypes from "prop-types";
 
-export const AddNoteComp = ({ newNote, handleOnChange, handleOnSubmit }) => {
+export const AddNoteComp = ({ _id }) => {
+  const dispatch = useDispatch();
+  const {
+    user: { name },
+  } = useSelector((state) => state.user);
+  const [note, setNote] = useState("");
+  const handleOnChange = (e) => {
+    setNote(e.target.value);
+  };
+
+  const handleOnSubmit = (e) => {
+    e.preventDefault();
+    const noteObj = {
+      note,
+      noteAddedBy: name,
+    };
+
+    dispatch(addNewNote(_id, noteObj));
+  };
   return (
     <Form onSubmit={handleOnSubmit}>
       <Form.Label>Add Note:</Form.Label>
       <br />
       <Form.Text> Please add your note here</Form.Text>
       <Form.Control
-        value={newNote}
+        value={note}
         onChange={handleOnChange}
         as="textarea"
         row="5"
@@ -25,7 +45,5 @@ export const AddNoteComp = ({ newNote, handleOnChange, handleOnSubmit }) => {
 };
 
 AddNoteComp.prototype = {
-  handleOnChange: PropTypes.func.isRequired,
-  handleOnSubmit: PropTypes.func.isRequired,
-  newNote: PropTypes.string.isRequired,
+  _id: PropTypes.string.isRequired,
 };

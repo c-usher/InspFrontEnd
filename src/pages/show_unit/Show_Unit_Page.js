@@ -19,14 +19,6 @@ export const ShowUnitPage = () => {
     dispatch(fetchUnit(uId));
   }, [newNote, uId, dispatch]);
 
-  const handleOnChange = (e) => {
-    setNewNote(e.target.value);
-    console.log(newNote);
-  };
-
-  const handleOnSubmit = (e) => {
-    alert("submitted note!");
-  };
   return (
     <Container>
       <Row>
@@ -91,11 +83,7 @@ export const ShowUnitPage = () => {
       <Row>
         <Col>
           <div className="new-note-box">
-            <AddNoteComp
-              notes={newNote}
-              handleOnChange={handleOnChange}
-              handleOnSubmit={handleOnSubmit}
-            />
+            <AddNoteComp _id={uId} />
           </div>
         </Col>
       </Row>
@@ -114,11 +102,7 @@ export const ShowUnitPage = () => {
       <Row>
         <Col>
           <div className="new-prefs-box">
-            <AddNoteComp
-              notes={newNote}
-              handleOnChange={handleOnChange}
-              handleOnSubmit={handleOnSubmit}
-            />
+            <AddNoteComp />
           </div>
         </Col>
       </Row>
