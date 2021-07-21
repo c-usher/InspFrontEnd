@@ -1,10 +1,11 @@
 import React, { useState } from "react";
-import { Form, Button } from "react-bootstrap";
+import { Form, Button, Alert } from "react-bootstrap";
 import { useSelector, useDispatch } from "react-redux";
 import { addNewNote } from "../../pages/show_units/unitsAction";
 import PropTypes from "prop-types";
 
 export const AddNoteComp = ({ _id }) => {
+  const { newNote } = useSelector((state) => state.units);
   const dispatch = useDispatch();
   const {
     user: { name },
@@ -22,25 +23,29 @@ export const AddNoteComp = ({ _id }) => {
     };
 
     dispatch(addNewNote(_id, noteObj));
+    setNote("");
   };
   return (
-    <Form onSubmit={handleOnSubmit}>
-      <Form.Label>Add Note:</Form.Label>
-      <br />
-      <Form.Text> Please add your note here</Form.Text>
-      <Form.Control
-        value={note}
-        onChange={handleOnChange}
-        as="textarea"
-        row="5"
-        name="detail"
-      />
-      <div className="mt-1">
-        <Button variant="info" type="submit">
-          Add Note
-        </Button>
-      </div>
-    </Form>
+    <div>
+      <div>{newNote && <Alert variant="success">{newNote}</Alert>}</div>
+      <Form onSubmit={handleOnSubmit}>
+        <Form.Label>Add Note:</Form.Label>
+        <br />
+        <Form.Text> Please add your note here</Form.Text>
+        <Form.Control
+          value={note}
+          onChange={handleOnChange}
+          as="textarea"
+          row="5"
+          name="detail"
+        />
+        <div className="mt-1">
+          <Button variant="info" type="submit">
+            Add Note
+          </Button>
+        </div>
+      </Form>
+    </div>
   );
 };
 

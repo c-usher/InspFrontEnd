@@ -27,7 +27,9 @@ export const fetchUnit = (_id) => async (dispatch) => {
   dispatch(fetchUnitLoading());
   try {
     const result = await getUnit(_id);
-    dispatch(fetchUnitSuccess(result.data.result[0]));
+    dispatch(
+      fetchUnitSuccess(result.data.result.length && result.data.result[0])
+    );
   } catch (error) {
     dispatch(fetchUnitFail(error.message));
   }
@@ -37,11 +39,12 @@ export const addNewNote = (_id, noteObj) => async (dispatch) => {
   dispatch(addNoteLoading());
   try {
     const result = await updateNote(_id, noteObj);
-    console.log(result);
     if (result.status === "error") {
       return dispatch(addNoteFail(result.message));
     }
-    dispatch(addNoteSuccess());
+
+    dispatch(fetchUnit(_id));
+    dispatch(addNoteSuccess(result.message));
   } catch (error) {
     console.log(error.message);
     dispatch(addNoteFail(error.message));
