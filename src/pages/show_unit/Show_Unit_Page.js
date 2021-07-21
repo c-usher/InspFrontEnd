@@ -38,7 +38,7 @@ export const ShowUnitPage = () => {
       <Row>
         <Col>
           <hr />
-          <h1 className="unit-num">Unit Number: {selectedUnit.unitNum}</h1>
+          <h1 className="unit-num"> {selectedUnit.unitNum}</h1>
           <hr />
           <h6 className="managed">
             Managed:
@@ -122,6 +122,7 @@ export const ShowUnitPage = () => {
           </div>
         </Col>
       </Row>
+      <br />
     </Container>
   );
 };
