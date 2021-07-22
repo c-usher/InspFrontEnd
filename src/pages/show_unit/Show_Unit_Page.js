@@ -13,7 +13,6 @@ export const ShowUnitPage = () => {
   const { isLoading, error, selectedUnit } = useSelector(
     (state) => state.units
   );
-  // const [unit, setUnit] = useState("");
 
   useEffect(() => {
     dispatch(fetchUnit(uId));

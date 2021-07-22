@@ -2,8 +2,12 @@ import React from "react";
 import PropTypes from "prop-types";
 import "./notes_history_style.css";
 import { Button } from "react-bootstrap";
+import { useDispatch } from "react-redux";
+import { noteStatusUpdate } from "../../pages/show_units/unitsAction";
 
 export const NotesHistoryComp = ({ notes }) => {
+  const uId = 0;
+  const dispatch = useDispatch();
   if (!notes) return null;
 
   return notes.map((row, i) => (
@@ -16,7 +20,12 @@ export const NotesHistoryComp = ({ notes }) => {
       </div>
       <div className="note">{row.note}</div>
       <div className="noteStatus">{row.noteStatus}</div>
-      <Button variant="info">Remove Note</Button>
+      <Button
+        variant="outline-info"
+        onClick={() => dispatch(noteStatusUpdate(uId))}
+      >
+        Remove Note
+      </Button>
     </div>
   ));
 };

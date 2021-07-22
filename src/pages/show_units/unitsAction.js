@@ -9,9 +9,18 @@ import {
   addNoteLoading,
   addNoteSuccess,
   addNoteFail,
+  noteStatusUpdateLoading,
+  noteStatusUpdateSuccess,
+  noteStatusUpdateFail,
+  fetchNoteLoading,
 } from "./unitsSlice";
 
-import { getAllUnits, getUnit, updateNote } from "../../api/unitsApi";
+import {
+  getAllUnits,
+  getUnit,
+  createNote,
+  updateNoteStatus,
+} from "../../api/unitsApi";
 
 export const fetchAllUnits = () => async (dispatch) => {
   dispatch(fetchUnitsLoading());
@@ -35,10 +44,22 @@ export const fetchUnit = (_id) => async (dispatch) => {
   }
 };
 
+export const fetchNote = (_id) => async (dispatch) => {
+  dispatch(fetchNoteLoading());
+  try {
+    const result = await getUnit(_id);
+    dispatch(
+      fetchUnitSuccess(result.data.result.length && result.data.result[0])
+    );
+  } catch (error) {
+    dispatch(fetchUnitFail(error.message));
+  }
+};
+
 export const addNewNote = (_id, noteObj) => async (dispatch) => {
   dispatch(addNoteLoading());
   try {
-    const result = await updateNote(_id, noteObj);
+    const result = await createNote(_id, noteObj);
     if (result.status === "error") {
       return dispatch(addNoteFail(result.message));
     }
@@ -48,6 +69,21 @@ export const addNewNote = (_id, noteObj) => async (dispatch) => {
   } catch (error) {
     console.log(error.message);
     dispatch(addNoteFail(error.message));
+  }
+};
+
+export const noteStatusUpdate = (_id) => async (dispatch) => {
+  dispatch(noteStatusUpdateLoading());
+  try {
+    const result = await updateNoteStatus(_id);
+    if (result.status === "error") {
+      return dispatch(noteStatusUpdateFail(result.message));
+    }
+    dispatch(fetchUnit(_id));
+    dispatch(noteStatusUpdateSuccess(result.message));
+  } catch (error) {
+    console.log(error.message);
+    dispatch(noteStatusUpdateFail(error.message));
   }
 };
 
