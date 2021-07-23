@@ -11,14 +11,16 @@ export const NotesHistoryComp = ({ notes }) => {
 
   return notes.map((row, i) => (
     <div className="note-history mt-3" key={i}>
-      <div className="unit-note ">
+      {row.noteStatus && <div className="noteStatus" />}
+      <div className="unit-note">
         <div className="note-by">{row.noteAddedBy}</div>
         <div className="date">
           {row.noteAddedAt && new Date(row.noteAddedAt).toLocaleString()}
         </div>
       </div>
+
       <div className="note">{row.note}</div>
-      <div className="noteStatus">{row.noteStatus}</div>
+
       <Button
         variant="outline-info"
         onClick={() => dispatch(noteStatusUpdate(row._id))}
