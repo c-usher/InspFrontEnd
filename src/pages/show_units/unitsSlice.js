@@ -4,6 +4,7 @@ const initialState = {
   units: [],
   isLoading: false,
   error: "",
+  addNoteError: "",
   searchUnitList: [],
   selectedUnit: {},
   newNote: "",
@@ -54,7 +55,7 @@ const showUnitsSlice = createSlice({
     },
     addNoteFail: (state, { payload }) => {
       state.isLoading = false;
-      state.error = payload;
+      state.addNoteError = payload;
     },
     noteStatusUpdateLoading: (state) => {
       state.isLoading = true;

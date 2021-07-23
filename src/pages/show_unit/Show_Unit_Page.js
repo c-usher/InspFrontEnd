@@ -7,10 +7,9 @@ import { useParams } from "react-router-dom";
 import { fetchUnit } from "../show_units/unitsAction";
 
 export const ShowUnitPage = () => {
-  const { newNote } = useSelector((state) => state.units);
   const { uId } = useParams();
   const dispatch = useDispatch();
-  const { isLoading, error, selectedUnit } = useSelector(
+  const { isLoading, error, selectedUnit, newNote, addNoteError } = useSelector(
     (state) => state.units
   );
   useEffect(() => {
@@ -23,6 +22,7 @@ export const ShowUnitPage = () => {
         <Col>
           {isLoading && <Spinner variant="primary" animation="border" />}
           {error && <Alert variant="danger">{error}</Alert>}
+          {addNoteError && <Alert variant="danger">{addNoteError}</Alert>}
           {newNote && <Alert variant="success">{newNote}</Alert>}
         </Col>
       </Row>
