@@ -1,4 +1,4 @@
-import React, { useState, useEffect } from "react";
+import React, { useEffect } from "react";
 import { useDispatch, useSelector } from "react-redux";
 import { Container, Col, Row, Spinner, Alert } from "react-bootstrap";
 import { AddNoteComp } from "../../components/add_note/Add_Note_Comp";
@@ -7,16 +7,15 @@ import { useParams } from "react-router-dom";
 import { fetchUnit } from "../show_units/unitsAction";
 
 export const ShowUnitPage = () => {
+  const { newNote } = useSelector((state) => state.units);
   const { uId } = useParams();
-  const [newNote, setNewNote] = useState("");
   const dispatch = useDispatch();
   const { isLoading, error, selectedUnit } = useSelector(
     (state) => state.units
   );
-
   useEffect(() => {
     dispatch(fetchUnit(uId));
-  }, [newNote, uId, dispatch]);
+  }, [uId, dispatch]);
 
   return (
     <Container>
@@ -24,6 +23,7 @@ export const ShowUnitPage = () => {
         <Col>
           {isLoading && <Spinner variant="primary" animation="border" />}
           {error && <Alert variant="danger">{error}</Alert>}
+          {newNote && <Alert variant="success">{newNote}</Alert>}
         </Col>
       </Row>
       <Row>

@@ -1,11 +1,10 @@
 import React, { useState } from "react";
-import { Form, Button, Alert } from "react-bootstrap";
+import { Form, Button } from "react-bootstrap";
 import { useSelector, useDispatch } from "react-redux";
 import { addNewNote } from "../../pages/show_units/unitsAction";
 import PropTypes from "prop-types";
 
 export const AddNoteComp = ({ _id }) => {
-  const { newNote } = useSelector((state) => state.units);
   const dispatch = useDispatch();
   const {
     user: { name },
@@ -27,7 +26,6 @@ export const AddNoteComp = ({ _id }) => {
   };
   return (
     <div>
-      <div>{newNote && <Alert variant="success">{newNote}</Alert>}</div>
       <Form onSubmit={handleOnSubmit}>
         <Form.Label>Add Note:</Form.Label>
         <br />

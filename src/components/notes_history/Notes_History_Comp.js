@@ -21,12 +21,15 @@ export const NotesHistoryComp = ({ notes }) => {
 
       <div className="note">{row.note}</div>
 
-      <Button
-        variant="outline-info"
-        onClick={() => dispatch(noteStatusUpdate(row._id))}
-      >
-        Update Status
-      </Button>
+      {!row.noteStatus && (
+        <Button
+          variant="outline-info"
+          onClick={() => dispatch(noteStatusUpdate(row._id))}
+        >
+          Update Status
+        </Button>
+      )}
+
       <Button variant="outline-warning">Delete Note</Button>
     </div>
   ));
