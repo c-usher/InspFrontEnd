@@ -12,7 +12,6 @@ import {
   noteStatusUpdateLoading,
   noteStatusUpdateSuccess,
   noteStatusUpdateFail,
-  fetchNoteLoading,
 } from "./unitsSlice";
 
 import {
@@ -34,18 +33,6 @@ export const fetchAllUnits = () => async (dispatch) => {
 
 export const fetchUnit = (_id) => async (dispatch) => {
   dispatch(fetchUnitLoading());
-  try {
-    const result = await getUnit(_id);
-    dispatch(
-      fetchUnitSuccess(result.data.result.length && result.data.result[0])
-    );
-  } catch (error) {
-    dispatch(fetchUnitFail(error.message));
-  }
-};
-
-export const fetchNote = (_id) => async (dispatch) => {
-  dispatch(fetchNoteLoading());
   try {
     const result = await getUnit(_id);
     dispatch(

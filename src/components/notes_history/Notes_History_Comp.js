@@ -6,7 +6,6 @@ import { useDispatch } from "react-redux";
 import { noteStatusUpdate } from "../../pages/show_units/unitsAction";
 
 export const NotesHistoryComp = ({ notes }) => {
-  const uId = 0;
   const dispatch = useDispatch();
   if (!notes) return null;
 
@@ -22,10 +21,11 @@ export const NotesHistoryComp = ({ notes }) => {
       <div className="noteStatus">{row.noteStatus}</div>
       <Button
         variant="outline-info"
-        onClick={() => dispatch(noteStatusUpdate(uId))}
+        onClick={() => dispatch(noteStatusUpdate(row._id))}
       >
-        Remove Note
+        Update Status
       </Button>
+      <Button variant="outline-warning">Delete Note</Button>
     </div>
   ));
 };

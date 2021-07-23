@@ -68,18 +68,6 @@ const showUnitsSlice = createSlice({
       state.isLoading = false;
       state.error = payload;
     },
-    fetchNoteLoading: (state) => {
-      state.isLoading = true;
-    },
-    fetchNoteSuccess: (state, { payload }) => {
-      state.selectedUnit = payload;
-      state.isLoading = false;
-      state.error = "";
-    },
-    fetchNoteFail: (state, { payload }) => {
-      state.isLoading = false;
-      state.error = payload;
-    },
   },
 });
 
@@ -99,9 +87,6 @@ export const {
   noteStatusUpdateLoading,
   noteStatusUpdateSuccess,
   noteStatusUpdateFail,
-  fetchNoteLoading,
-  fetchNoteSuccess,
-  fetchNoteFail,
 } = actions;
 
 export default reducer;
