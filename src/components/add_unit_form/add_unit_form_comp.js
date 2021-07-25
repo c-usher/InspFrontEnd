@@ -63,7 +63,21 @@ export const AddUnitForm = () => {
     });
   };
 
-  const handleManagedCheck = (e) => {
+  const handleManagedChecked = (e) => {
+    if (e.target.checked) {
+      setFormData({
+        ...formData,
+        rentalStatus: true,
+      });
+    } else {
+      setFormData({
+        ...formData,
+        rentalStatus: false,
+      });
+    }
+  };
+
+  const handleRentalChecked = (e) => {
     if (e.target.checked) {
       setFormData({
         ...formData,
@@ -75,8 +89,6 @@ export const AddUnitForm = () => {
         managedStatus: false,
       });
     }
-
-    console.log(initialStateForm.managedStatus);
   };
 
   return (
@@ -108,8 +120,10 @@ export const AddUnitForm = () => {
         </Form.Group>
         <br />
         <hr />
-        <input type="checkbox" onChange={handleManagedCheck} />
+        <input type="checkbox" onChange={handleManagedChecked} />
         <span>Unit managed by Inspection Company</span>
+        <input type="checkbox" onChange={handleRentalChecked} />
+        <span>Unit in rental program</span>
         <br />
         <hr />
         <Form.Group as={Row}>
