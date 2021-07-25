@@ -31,7 +31,6 @@ const initialStateForm = {
   prefAddedBy: "",
   pref: "",
 };
-
 export const AddUnitForm = () => {
   const [formData, setFormData] = useState(initialStateForm);
   const [formDataError, setFormDataError] = useState(initialErrorStateForm);
@@ -64,6 +63,22 @@ export const AddUnitForm = () => {
     });
   };
 
+  const handleManagedCheck = (e) => {
+    if (e.target.checked) {
+      setFormData({
+        ...formData,
+        managedStatus: true,
+      });
+    } else {
+      setFormData({
+        ...formData,
+        managedStatus: false,
+      });
+    }
+
+    console.log(initialStateForm.managedStatus);
+  };
+
   return (
     <Jumbotron className="mt-3 add-new-unit bg-light">
       <h1 className="text-info text-center">Add A New Unit</h1>
@@ -91,6 +106,10 @@ export const AddUnitForm = () => {
           {/* </Form.Group>
         <Form.Group as={Row}> */}
         </Form.Group>
+        <br />
+        <hr />
+        <input type="checkbox" onChange={handleManagedCheck} />
+        <span>Unit managed by Inspection Company</span>
         <br />
         <hr />
         <Form.Group as={Row}>
