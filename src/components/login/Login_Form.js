@@ -23,7 +23,7 @@ export const LoginForm = ({ formSwitch }) => {
 
   useEffect(() => {
     sessionStorage.getItem("accessJWT") && history.push("/dashboard");
-  }, [history, isAuth]);
+  }, [isAuth, history]);
 
   const [email, setEmail] = useState("");
   const [password, setPassword] = useState("");
