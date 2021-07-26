@@ -41,6 +41,7 @@ export const AddUnitForm = () => {
     setFormDataError(initialErrorStateForm);
     const unitValid = await unitNumCheck(formData.unitNum);
     const notesValid = await notesCheck(formData.notes);
+    const prefValid = await notesCheck(formData.pref);
 
     !unitValid &&
       setFormDataError({
@@ -52,11 +53,18 @@ export const AddUnitForm = () => {
         ...initialErrorStateForm,
         notes: !notesValid,
       });
+
+    !prefValid &&
+      setFormDataError({
+        ...initialErrorStateForm,
+        pref: !prefValid,
+      });
     console.log("Submit Received", formData);
   };
 
   const handleOnChange = (e) => {
     const { name, value } = e.target;
+    console.log(name);
     setFormData({
       ...formData,
       [name]: value,
@@ -115,20 +123,19 @@ export const AddUnitForm = () => {
                 "Unit number does not meet prerequisite!"}
             </Form.Text>
           </Col>
-          {/* </Form.Group>
-        <Form.Group as={Row}> */}
         </Form.Group>
         <br />
-        <hr />
-        <input type="checkbox" onChange={handleManagedChecked} />
-        <span>Unit managed by Inspection Company</span>
-        <input type="checkbox" onChange={handleRentalChecked} />
-        <span>Unit in rental program</span>
-        <br />
-        <hr />
         <Form.Group as={Row}>
-          <Form.Label>Notes:</Form.Label>
+          <div>Unit managed by Inspection Company</div>
+          <input type="checkbox" onChange={handleManagedChecked} />
+          <br />
+          <div>Unit in rental program</div>
+          <input type="checkbox" onChange={handleRentalChecked} />
+        </Form.Group>
+        <br />
+        <Form.Group as={Row}>
           <Col>
+            <Form.Label>Notes:</Form.Label>
             <Form.Control
               as="textarea"
               name="notes"
@@ -144,6 +151,26 @@ export const AddUnitForm = () => {
             </Form.Text>
           </Col>
         </Form.Group>
+        <br />
+        <Form.Group as={Row}>
+          <Col>
+            <Form.Label>Preferences:</Form.Label>
+            <Form.Control
+              as="textarea"
+              name="pref"
+              minLength="1"
+              maxLength="300"
+              value={formData.pref}
+              rows="5"
+              placeholder="Enter Preferences"
+              onChange={handleOnChange}
+            />
+            <Form.Text className="text-danger">
+              {formDataError.notes && "Preference do not meet prerequisite!"}
+            </Form.Text>
+          </Col>
+        </Form.Group>
+
         <Button type="submit" variant="info" block sz="lg">
           Add Unit
         </Button>
@@ -158,17 +185,3 @@ export const AddUnitForm = () => {
 //   formData: PropTypes.object.isRequired,
 //   formDataError: PropTypes.object.isRequired,
 // };
-
-/*{
-    "unitAddedBy": "Cody Usher",
-    "unitNum" : "A901", -- 
-    "cleanStatus": true, --
-    "inHouseStatus": true, --
-    "managedStatus": true, --
-    "rentalStatus" : true, --
-    "note": "this is a note",
-    "noteAddedBy": "Cody Usher",
-    "noteStatus": true,
-    "prefAddedBy": "Cody Usher",
-    "pref": "80 Degrees"
-} */
