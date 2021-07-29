@@ -1,6 +1,14 @@
 import React, { useState, useEffect } from "react";
 import { useDispatch, useSelector } from "react-redux";
-import { Form, Jumbotron, Row, Col, Button } from "react-bootstrap";
+import {
+  Form,
+  Jumbotron,
+  Row,
+  Col,
+  Button,
+  Spinner,
+  Alert,
+} from "react-bootstrap";
 import "./add_unit_form_style.css";
 import { unitNumCheck, notesCheck } from "../../utils/validation";
 import { createNewUnit } from "./addUnitAction";
@@ -37,6 +45,9 @@ export const AddUnitForm = () => {
   const {
     user: { name },
   } = useSelector((state) => state.user);
+  const { isLoading, error, successMsg } = useSelector(
+    (state) => state.newUnit
+  );
   const [formData, setFormData] = useState(initialStateForm);
   const [formDataError, setFormDataError] = useState(initialErrorStateForm);
   useEffect(() => {}, [formData, formDataError]);
@@ -116,6 +127,10 @@ export const AddUnitForm = () => {
     <Jumbotron className="mt-3 add-new-unit bg-light">
       <h1 className="text-info text-center">Add A New Unit</h1>
       <hr />
+      <div>{error && <Alert variant="danger">{error}</Alert>}</div>
+      <div>{successMsg && <Alert variant="primary">{successMsg}</Alert>}</div>
+      <div>{isLoading && <Spinner variant="primary" animation="border" />}</div>
+
       <Form autoComplete="off" onSubmit={handleOnSubmit}>
         <Form.Group as={Row}>
           <Form.Label column sm={3}>

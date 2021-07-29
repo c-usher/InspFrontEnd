@@ -11,8 +11,10 @@ export const createNewUnit = (formData) => (dispatch) => {
       dispatch(createUnitPending());
 
       const result = await addNewUnit(formData);
-      console.log(result);
-      dispatch(createUnitSuccess());
+      if (result.status === "error") {
+        return dispatch(createUnitFail(result.message));
+      }
+      dispatch(createUnitSuccess(result.message));
     } catch (error) {
       console.log(error);
       dispatch(createUnitFail(error.message));
