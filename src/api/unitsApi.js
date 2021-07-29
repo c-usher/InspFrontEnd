@@ -76,3 +76,20 @@ export const updateNoteStatus = (_id) => {
     }
   });
 };
+
+export const addNewUnit = (formData) => {
+  return new Promise(async (resolve, reject) => {
+    try {
+      const result = await axios.post(getAllUnitsUrl, formData, {
+        headers: {
+          Authorization: sessionStorage.getItem("accessJWT"),
+        },
+      });
+
+      resolve(result.data);
+    } catch (error) {
+      console.log(error.message);
+      reject(error);
+    }
+  });
+};

@@ -1,8 +1,9 @@
 import React, { useState, useEffect } from "react";
+import { useDispatch, useSelector } from "react-redux";
 import { Form, Jumbotron, Row, Col, Button } from "react-bootstrap";
-// import PropTypes from "prop-types";
 import "./add_unit_form_style.css";
 import { unitNumCheck, notesCheck } from "../../utils/validation";
+import { createNewUnit } from "./addUnitAction";
 
 const initialErrorStateForm = {
   unitAddedBy: "",
@@ -32,6 +33,10 @@ const initialStateForm = {
   pref: "",
 };
 export const AddUnitForm = () => {
+  const dispatch = useDispatch();
+  const {
+    user: { name },
+  } = useSelector((state) => state.user);
   const [formData, setFormData] = useState(initialStateForm);
   const [formDataError, setFormDataError] = useState(initialErrorStateForm);
   useEffect(() => {}, [formData, formDataError]);
@@ -40,7 +45,7 @@ export const AddUnitForm = () => {
     e.preventDefault();
     setFormDataError(initialErrorStateForm);
     const unitValid = await unitNumCheck(formData.unitNum);
-    const notesValid = await notesCheck(formData.notes);
+    const notesValid = await notesCheck(formData.note);
     const prefValid = await notesCheck(formData.pref);
 
     !unitValid &&
@@ -51,7 +56,7 @@ export const AddUnitForm = () => {
     !notesValid &&
       setFormDataError({
         ...initialErrorStateForm,
-        notes: !notesValid,
+        note: !notesValid,
       });
 
     !prefValid &&
@@ -59,7 +64,15 @@ export const AddUnitForm = () => {
         ...initialErrorStateForm,
         pref: !prefValid,
       });
-    console.log("Submit Received", formData);
+
+    dispatch(
+      createNewUnit({
+        ...formData,
+        unitAddedBy: name,
+        noteAddedBy: name,
+        prefAddedBy: name,
+      })
+    );
   };
 
   const handleOnChange = (e) => {
@@ -138,16 +151,16 @@ export const AddUnitForm = () => {
             <Form.Label>Notes:</Form.Label>
             <Form.Control
               as="textarea"
-              name="notes"
+              name="note"
               minLength="1"
               maxLength="300"
-              value={formData.notes}
+              value={formData.note}
               rows="5"
               placeholder="Enter Notes"
               onChange={handleOnChange}
             />
             <Form.Text className="text-danger">
-              {formDataError.notes && "Notes do not meet prerequisite!"}
+              {formDataError.note && "Notes do not meet prerequisite!"}
             </Form.Text>
           </Col>
         </Form.Group>
@@ -166,7 +179,7 @@ export const AddUnitForm = () => {
               onChange={handleOnChange}
             />
             <Form.Text className="text-danger">
-              {formDataError.notes && "Preference do not meet prerequisite!"}
+              {formDataError.note && "Preference do not meet prerequisite!"}
             </Form.Text>
           </Col>
         </Form.Group>
@@ -178,10 +191,3 @@ export const AddUnitForm = () => {
     </Jumbotron>
   );
 };
-
-// AddUnitForm.propTypes = {
-//   handleOnSubmit: PropTypes.func.isRequired,
-//   handleOnChange: PropTypes.func.isRequired,
-//   formData: PropTypes.object.isRequired,
-//   formDataError: PropTypes.object.isRequired,
-// };
