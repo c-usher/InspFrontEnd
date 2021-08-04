@@ -19,9 +19,17 @@ const newUnitSlice = createSlice({
       state.isLoading = true;
       state.error = payload;
     },
+    resetSuccessMsg: (state) => {
+      state.isLoading = true;
+      state.successMsg = "";
+    },
   },
 });
 
-export const { createUnitPending, createUnitSuccess, createUnitFail } =
-  newUnitSlice.actions;
+export const {
+  createUnitPending,
+  createUnitSuccess,
+  createUnitFail,
+  resetSuccessMsg,
+} = newUnitSlice.actions;
 export default newUnitSlice.reducer;

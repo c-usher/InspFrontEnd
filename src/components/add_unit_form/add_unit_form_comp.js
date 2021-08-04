@@ -12,6 +12,7 @@ import {
 import "./add_unit_form_style.css";
 import { unitNumCheck, notesCheck } from "../../utils/validation";
 import { createNewUnit } from "./addUnitAction";
+import { resetSuccessMsg } from "./addUnitSlice";
 
 const initialErrorStateForm = {
   unitAddedBy: "",
@@ -52,7 +53,11 @@ export const AddUnitForm = () => {
   );
   const [formData, setFormData] = useState(initialStateForm);
   const [formDataError, setFormDataError] = useState(initialErrorStateForm);
-  useEffect(() => {}, [formData, formDataError]);
+  useEffect(() => {
+    return () => {
+      successMsg && dispatch(resetSuccessMsg());
+    };
+  }, [formData, formDataError, dispatch]);
 
   const handleOnSubmit = async (e) => {
     e.preventDefault();
