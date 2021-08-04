@@ -15,6 +15,8 @@ export const Dashboard = () => {
     }
   }, [units, dispatch]);
 
+  const unitsLeft = units.filter((row) => row.inspectedStatus === false);
+
   return (
     <Container>
       <Row>
@@ -26,8 +28,8 @@ export const Dashboard = () => {
       </Row>
       <Row>
         <Col className="text-center  mb-2">
+          <div> Units Left to Inspect: {unitsLeft.length} </div>
           <div>Total Units: {units.length}</div>
-          <div> Pending Units: 50 </div> // ! ADD LOGIC
         </Col>
       </Row>
       <Row>
