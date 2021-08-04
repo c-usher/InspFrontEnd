@@ -69,6 +69,11 @@ const showUnitsSlice = createSlice({
       state.isLoading = false;
       state.error = payload;
     },
+    resetResponseMsg: (state) => {
+      state.isLoading = false;
+      state.addNoteError = "";
+      state.newNote = "";
+    },
   },
 });
 
@@ -88,6 +93,7 @@ export const {
   noteStatusUpdateLoading,
   noteStatusUpdateSuccess,
   noteStatusUpdateFail,
+  resetResponseMsg,
 } = actions;
 
 export default reducer;

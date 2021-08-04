@@ -5,6 +5,7 @@ import { AddNoteComp } from "../../components/add_note/Add_Note_Comp";
 import { NotesHistoryComp } from "../../components/notes_history/Notes_History_Comp";
 import { useParams } from "react-router-dom";
 import { fetchUnit } from "../show_units/unitsAction";
+import { resetResponseMsg } from "../show_units/unitsSlice";
 
 export const ShowUnitPage = () => {
   const { uId } = useParams();
@@ -13,8 +14,12 @@ export const ShowUnitPage = () => {
     (state) => state.units
   );
   useEffect(() => {
-    dispatch(fetchUnit(uId));
-  }, [uId, dispatch]);
+    (newNote || addNoteError) && dispatch(fetchUnit(uId));
+
+    return () => {
+      dispatch(resetResponseMsg());
+    };
+  }, [uId, dispatch, newNote, addNoteError]);
 
   return (
     <Container>
@@ -55,7 +60,7 @@ export const ShowUnitPage = () => {
           </h6>
           <h6 className="inspected">
             Inspected:
-            {selectedUnit.inspected
+            {selectedUnit.inspectedStatus
               ? " This unit is inspected"
               : " This unit is not inspected"}
           </h6>
