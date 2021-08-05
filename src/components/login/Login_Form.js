@@ -107,6 +107,12 @@ export const LoginForm = ({ formSwitch }) => {
           </a>
         </Col>
       </Row>
+
+      <Row className="py-4">
+        <Col>
+          <a href="/registration">Create Account</a>
+        </Col>
+      </Row>
     </Container>
   );
 };
