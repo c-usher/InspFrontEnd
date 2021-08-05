@@ -1,4 +1,5 @@
 import React, { useState } from "react";
+import { Jumbotron } from "react-bootstrap";
 import { LoginForm } from "../../components/login/Login_Form";
 import { PasswordResetForm } from "../../components/password_reset/Password_Reset_Form";
 import "./login_page_style.css";
@@ -12,8 +13,10 @@ export const LoginPage = () => {
 
   return (
     <div className="login-page">
-      {formLoad === "login" && <LoginForm formSwitch={formSwitch} />}
-      {formLoad === "reset" && <PasswordResetForm formSwitch={formSwitch} />}
+      <Jumbotron className="form-box">
+        {formLoad === "login" && <LoginForm formSwitch={formSwitch} />}
+        {formLoad === "reset" && <PasswordResetForm formSwitch={formSwitch} />}
+      </Jumbotron>
     </div>
   );
 };

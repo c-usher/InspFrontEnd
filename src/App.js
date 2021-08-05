@@ -7,6 +7,7 @@ import { LoginPage } from "./pages/login/Login_Page";
 import { AddUnit } from "./pages/new-unit/Add_Unit_page";
 import { ShowUnitsPage } from "./pages/show_units/Show_Units_Page";
 import { PrivateRoute } from "./components/private-route/Private_Route";
+import { RegPage } from "./pages/registration/Reg_Page";
 
 function App() {
   return (
@@ -16,6 +17,10 @@ function App() {
           <Route exact path="/">
             <LoginPage />
           </Route>
+          <Route exact path="/registration">
+            <RegPage />
+          </Route>
+
           <PrivateRoute path="/dashboard">
             <Dashboard />
           </PrivateRoute>
