@@ -7,9 +7,11 @@ import RegForm from "../../components/registration/Reg_Form";
 export const RegPage = () => {
   return (
     <div className="registration_page">
-      <Jumbotron className="form-box">
-        <RegForm />
-      </Jumbotron>
+      <div className="mt-5">
+        <Jumbotron className="form-box">
+          <RegForm />
+        </Jumbotron>
+      </div>
     </div>
   );
 };
