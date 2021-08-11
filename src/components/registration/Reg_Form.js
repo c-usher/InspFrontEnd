@@ -9,13 +9,40 @@ const initialState = {
   confirmPassword: "",
 };
 
+const passVerifyErr = {
+  correctLength: false,
+  hasUpper: false,
+  hasLower: false,
+  hasNumber: false,
+  hasSpecial: false,
+};
+
 const RegForm = () => {
   const [newUser, setNewUser] = useState(initialState);
+  const [passErr, setPassErr] = useState(passVerifyErr);
+
   useEffect(() => {}, [newUser]);
 
   const handleOnChange = (e) => {
     const { name, value } = e.target;
     setNewUser({ ...newUser, [name]: value });
+
+    if (name === "password") {
+      const correctLength = value.length > 7;
+      const hasUpper = /[A-Z]/.test(value);
+      const hasLower = /[a-z]/.test(value);
+      const hasNumber = /[0-9]/.test(value);
+      const hasSpecial = /[!,@,#,$,%,&]/.test(value);
+
+      setPassErr({
+        ...passErr,
+        correctLength,
+        hasUpper,
+        hasLower,
+        hasNumber,
+        hasSpecial,
+      });
+    }
   };
   console.log(newUser);
   return (
@@ -80,19 +107,27 @@ const RegForm = () => {
               />
             </Form.Group>
             <ul className="py-4">
-              <li className="text-danger">
+              <li
+                className={
+                  passErr.correctLength ? "text-success" : "text-danger"
+                }
+              >
                 Password needs to be at least 7 characters long!
               </li>
-              <li className="text-danger">
+              <li className={passErr.hasUpper ? "text-success" : "text-danger"}>
                 Password needs at least one uppercase letter!
               </li>
-              <li className="text-danger">
+              <li className={passErr.hasLower ? "text-success" : "text-danger"}>
                 Password needs at least one lowercase letter!
               </li>
-              <li className="text-danger">
+              <li
+                className={passErr.hasNumber ? "text-success" : "text-danger"}
+              >
                 Password needs at least one number!
               </li>
-              <li className="text-danger">
+              <li
+                className={passErr.hasSpecial ? "text-success" : "text-danger"}
+              >
                 Password needs at least one special character!
               </li>
             </ul>
