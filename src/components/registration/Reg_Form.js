@@ -133,7 +133,11 @@ const RegForm = () => {
                 </li>
               )}
             </ul>
-            <Button variant="primary" type="submit">
+            <Button
+              variant="primary"
+              type="submit"
+              disabled={Object.values(passErr).includes(false)}
+            >
               Submit
             </Button>
           </Form>
