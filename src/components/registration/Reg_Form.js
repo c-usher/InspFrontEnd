@@ -1,3 +1,4 @@
+import { DateRangeRounded, DragHandleSharp } from "@material-ui/icons";
 import React, { useState, useEffect } from "react";
 import { Col, Container, Row, Form, Button } from "react-bootstrap";
 
@@ -115,6 +116,11 @@ const RegForm = () => {
                 placeholder="Confirm Password"
               />
             </Form.Group>
+            <Form.Text>
+              {!passErr.confirmPassword && (
+                <div className="text-danger mb-3">Passwords do not match!</div>
+              )}
+            </Form.Text>
             <ul className="py-4">
               {!passErr.correctLength && (
                 <li className={"text-danger"}>
