@@ -15,6 +15,7 @@ const passVerifyErr = {
   hasLower: false,
   hasNumber: false,
   hasSpecial: false,
+  confirmPassword: false,
 };
 
 const RegForm = () => {
@@ -25,6 +26,7 @@ const RegForm = () => {
 
   const handleOnChange = (e) => {
     const { name, value } = e.target;
+
     setNewUser({ ...newUser, [name]: value });
 
     if (name === "password") {
@@ -43,7 +45,14 @@ const RegForm = () => {
         hasSpecial,
       });
     }
+    if (name === "confirmPassword") {
+      setPassErr({
+        ...passErr,
+        confirmPassword: newUser.password === value,
+      });
+    }
   };
+  console.log(passErr);
   console.log(newUser);
   return (
     <Container>
