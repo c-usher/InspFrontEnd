@@ -107,29 +107,31 @@ const RegForm = () => {
               />
             </Form.Group>
             <ul className="py-4">
-              <li
-                className={
-                  passErr.correctLength ? "text-success" : "text-danger"
-                }
-              >
-                Password needs to be at least 7 characters long!
-              </li>
-              <li className={passErr.hasUpper ? "text-success" : "text-danger"}>
-                Password needs at least one uppercase letter!
-              </li>
-              <li className={passErr.hasLower ? "text-success" : "text-danger"}>
-                Password needs at least one lowercase letter!
-              </li>
-              <li
-                className={passErr.hasNumber ? "text-success" : "text-danger"}
-              >
-                Password needs at least one number!
-              </li>
-              <li
-                className={passErr.hasSpecial ? "text-success" : "text-danger"}
-              >
-                Password needs at least one special character!
-              </li>
+              {!passErr.correctLength && (
+                <li className={"text-danger"}>
+                  Password needs to be at least 7 characters long!
+                </li>
+              )}
+              {!passErr.hasUpper && (
+                <li className="text-danger">
+                  Password needs at least one uppercase letter!
+                </li>
+              )}
+              {!passErr.hasLower && (
+                <li className="text-danger">
+                  Password needs at least one lowercase letter!
+                </li>
+              )}
+              {!passErr.hasNumber && (
+                <li className="text-danger">
+                  Password needs at least one number!
+                </li>
+              )}
+              {!passErr.hasSpecial && (
+                <li className="text-danger">
+                  Password needs at least one special character!
+                </li>
+              )}
             </ul>
             <Button variant="primary" type="submit">
               Submit
