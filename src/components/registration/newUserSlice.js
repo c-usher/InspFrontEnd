@@ -25,3 +25,10 @@ const newUserSlice = createSlice({
     },
   },
 });
+
+const { reducer, actions } = newUserSlice;
+
+export const { registrationPending, registrationSuccess, registrationError } =
+  actions;
+
+export default reducer;
