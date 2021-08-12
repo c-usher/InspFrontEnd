@@ -1,13 +1,12 @@
-import { DateRangeRounded, DragHandleSharp } from "@material-ui/icons";
 import React, { useState, useEffect } from "react";
 import { Col, Container, Row, Form, Button } from "react-bootstrap";
 
 const initialState = {
-  name: "",
-  phone: "",
-  email: "",
-  password: "",
-  confirmPassword: "",
+  name: "Cody Test",
+  phone: "1231231234",
+  email: "test1@test.com",
+  password: "12345678Aa#",
+  confirmPassword: "12345678Aa#",
 };
 
 const passVerifyErr = {

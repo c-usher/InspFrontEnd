@@ -57,7 +57,7 @@ export const AddUnitForm = () => {
     return () => {
       successMsg && dispatch(resetSuccessMsg());
     };
-  }, [formData, formDataError, dispatch]);
+  }, [formData, formDataError, dispatch, successMsg]);
 
   const handleOnSubmit = async (e) => {
     e.preventDefault();
