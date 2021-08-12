@@ -53,8 +53,12 @@ const RegForm = () => {
       });
     }
   };
-  console.log(passErr);
-  console.log(newUser);
+
+  const handleOnSubmit = (e) => {
+    e.preventDefault();
+    console.log(newUser);
+  };
+
   return (
     <Container>
       <Row>
@@ -65,7 +69,7 @@ const RegForm = () => {
       <hr />
       <Row>
         <Col>
-          <Form>
+          <Form onSubmit={handleOnSubmit}>
             <Form.Group>
               <Form.Label>Full Name</Form.Label>
               <Form.Control
@@ -158,7 +162,11 @@ const RegForm = () => {
           </Form>
         </Col>
       </Row>
-      <br />
+      <Row className="py-4">
+        <Col>
+          <a href="/">Back to Login</a>
+        </Col>
+      </Row>
     </Container>
   );
 };
