@@ -6,6 +6,7 @@ const newUserUrl = `${rootUrl}/user/create`;
 const logoutUrl = `${rootUrl}/user/logout`;
 const userProfUrl = `${rootUrl}/user`;
 const newAccessJWT = `${rootUrl}/tokens`;
+const userVerifyUrl = `${userProfUrl}/verify`;
 
 export const newUser = (formData) => {
   return new Promise(async (resolve, reject) => {
@@ -18,6 +19,21 @@ export const newUser = (formData) => {
       }
     } catch (error) {
       reject(error);
+    }
+  });
+};
+
+export const newUserVerify = (frmData) => {
+  return new Promise(async (resolve, reject) => {
+    try {
+      const res = await axios.patch(userVerifyUrl, frmData);
+
+      resolve(res.data);
+      if (res.data.status === "success") {
+        resolve(res.data);
+      }
+    } catch (error) {
+      reject({ status: "error", message: error.error });
     }
   });
 };

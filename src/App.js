@@ -8,6 +8,7 @@ import { AddUnit } from "./pages/new-unit/Add_Unit_page";
 import { ShowUnitsPage } from "./pages/show_units/Show_Units_Page";
 import { PrivateRoute } from "./components/private-route/Private_Route";
 import { RegPage } from "./pages/registration/Reg_Page";
+import { UserVerifyPage } from "./pages/user-verify/User_Verify_Page";
 
 function App() {
   return (
@@ -19,6 +20,9 @@ function App() {
           </Route>
           <Route exact path="/registration">
             <RegPage />
+          </Route>
+          <Route exact path="/verify/:_id/:email">
+            <UserVerifyPage />
           </Route>
 
           <PrivateRoute path="/dashboard">
