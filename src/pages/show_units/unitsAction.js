@@ -25,7 +25,8 @@ export const fetchAllUnits = () => async (dispatch) => {
   dispatch(fetchUnitsLoading());
   try {
     const result = await getAllUnits();
-    dispatch(fetchUnitsSuccess(result.data.result));
+    result.data.result.length &&
+      dispatch(fetchUnitsSuccess(result.data.result));
   } catch (error) {
     dispatch(fetchUnitsFail(error.message));
   }
