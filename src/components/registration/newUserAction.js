@@ -3,6 +3,7 @@ import { newUserPending, newUserSuccess, newUserError } from "./newUserSlice";
 
 export const createNewUser = (data) => async (dispatch) => {
   try {
+    dispatch(newUserPending());
     const result = await newUser(data);
     result.status === "success"
       ? dispatch(newUserSuccess(result.message))

@@ -1,6 +1,14 @@
 import React, { useState, useEffect } from "react";
-import { useDispatch } from "react-redux";
-import { Col, Container, Row, Form, Button } from "react-bootstrap";
+import { useDispatch, useSelector } from "react-redux";
+import {
+  Col,
+  Container,
+  Row,
+  Form,
+  Button,
+  Spinner,
+  Alert,
+} from "react-bootstrap";
 import { createNewUser } from "./newUserAction";
 
 const initialState = {
@@ -24,6 +32,8 @@ const RegForm = () => {
   const dispatch = useDispatch();
   const [newUser, setNewUser] = useState(initialState);
   const [passErr, setPassErr] = useState(passVerifyErr);
+
+  const { isLoading, status, message } = useSelector((state) => state.newUser);
 
   useEffect(() => {}, [newUser]);
 
@@ -69,6 +79,15 @@ const RegForm = () => {
         </Col>
       </Row>
       <hr />
+      <Row>
+        <Col>
+          {message && (
+            <Alert variant={status === "Success" ? "success" : "danger"}>
+              {message}
+            </Alert>
+          )}
+        </Col>
+      </Row>
       <Row>
         <Col>
           <Form onSubmit={handleOnSubmit}>
@@ -161,6 +180,7 @@ const RegForm = () => {
             >
               Submit
             </Button>
+            {isLoading && <Spinner variant="info" animation="border" />}
           </Form>
         </Col>
       </Row>
