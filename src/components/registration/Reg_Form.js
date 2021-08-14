@@ -68,7 +68,14 @@ const RegForm = () => {
 
   const handleOnSubmit = (e) => {
     e.preventDefault();
-    dispatch(createNewUser(newUser));
+    const { name, phone, email, password } = newUser;
+    const newUserReg = {
+      name,
+      phone,
+      email,
+      password,
+    };
+    dispatch(createNewUser(newUserReg));
   };
 
   return (
