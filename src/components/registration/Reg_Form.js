@@ -1,5 +1,7 @@
 import React, { useState, useEffect } from "react";
+import { useDispatch } from "react-redux";
 import { Col, Container, Row, Form, Button } from "react-bootstrap";
+import { createNewUser } from "./newUserAction";
 
 const initialState = {
   name: "Cody Test",
@@ -19,6 +21,7 @@ const passVerifyErr = {
 };
 
 const RegForm = () => {
+  const dispatch = useDispatch();
   const [newUser, setNewUser] = useState(initialState);
   const [passErr, setPassErr] = useState(passVerifyErr);
 
@@ -55,7 +58,7 @@ const RegForm = () => {
 
   const handleOnSubmit = (e) => {
     e.preventDefault();
-    console.log(newUser);
+    dispatch(createNewUser(newUser));
   };
 
   return (

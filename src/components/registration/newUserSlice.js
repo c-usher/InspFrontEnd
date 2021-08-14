@@ -10,15 +10,15 @@ const newUserSlice = createSlice({
   name: "userRegistration",
   initialState,
   reducers: {
-    registrationPending: (state) => {
+    newUserPending: (state) => {
       state.isLoading = true;
     },
-    registrationSuccess: (state, { payload }) => {
+    newUserSuccess: (state, { payload }) => {
       state.isLoading = false;
       state.status = "Success";
       state.message = payload;
     },
-    registrationError: (state, { payload }) => {
+    newUserError: (state, { payload }) => {
       state.isLoading = false;
       state.status = "Error";
       state.message = payload;
@@ -28,7 +28,6 @@ const newUserSlice = createSlice({
 
 const { reducer, actions } = newUserSlice;
 
-export const { registrationPending, registrationSuccess, registrationError } =
-  actions;
+export const { newUserPending, newUserSuccess, newUserError } = actions;
 
 export default reducer;

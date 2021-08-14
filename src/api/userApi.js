@@ -2,9 +2,25 @@ import axios from "axios";
 
 const rootUrl = "http://localhost:3001";
 const loginUrl = `${rootUrl}/user/login`;
+const newUserUrl = `${rootUrl}/user/create`;
 const logoutUrl = `${rootUrl}/user/logout`;
 const userProfUrl = `${rootUrl}/user`;
 const newAccessJWT = `${rootUrl}/tokens`;
+
+export const newUser = (formData) => {
+  return new Promise(async (resolve, reject) => {
+    try {
+      const res = await axios.post(newUserUrl, formData);
+      resolve(res.data);
+
+      if (res.data.status === "success") {
+        resolve(res.data);
+      }
+    } catch (error) {
+      reject(error);
+    }
+  });
+};
 
 export const userLogin = (formData) => {
   return new Promise(async (resolve, reject) => {
