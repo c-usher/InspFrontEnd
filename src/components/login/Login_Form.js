@@ -102,9 +102,7 @@ export const LoginForm = ({ formSwitch }) => {
 
       <Row>
         <Col>
-          <a href="#!" onClick={() => formSwitch("reset")}>
-            Forgot Password?
-          </a>
+          <a href="/reset-password">Forgot Password?</a>
         </Col>
       </Row>
 
