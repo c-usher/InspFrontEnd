@@ -14,3 +14,16 @@ export const passResetRequest = (email) => {
     }
   });
 };
+
+export const passUpdate = (passObj) => {
+  console.log(passObj);
+  return new Promise(async (resolve, reject) => {
+    try {
+      const { data } = await axios.patch(resetPassUrl, passObj);
+
+      resolve(data);
+    } catch (error) {
+      reject(error);
+    }
+  });
+};

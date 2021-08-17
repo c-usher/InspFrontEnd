@@ -9,7 +9,7 @@ import { ShowUnitsPage } from "./pages/show_units/Show_Units_Page";
 import { PrivateRoute } from "./components/private-route/Private_Route";
 import { RegPage } from "./pages/registration/Reg_Page";
 import { UserVerifyPage } from "./pages/user-verify/User_Verify_Page";
-import { ResetPassPage } from "./pages/reset-password/Reset_Password_Page";
+import { ResetPassPage } from "./pages/reset_password/Reset_Password_Page";
 
 function App() {
   return (
