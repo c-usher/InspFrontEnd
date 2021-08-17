@@ -1,16 +1,30 @@
 import React, { useState } from "react";
-import { Button, Col, Container, Form, Row } from "react-bootstrap";
+import { useDispatch, useSelector } from "react-redux";
+import {
+  Button,
+  Col,
+  Container,
+  Form,
+  Row,
+  Alert,
+  Spinner,
+} from "react-bootstrap";
+import { sendPassResetEmail } from "./passwordAction";
 
 export const PasswordResetForm = () => {
+  const dispatch = useDispatch();
   const [email, setEmail] = useState("");
+  const { isLoading, status, message } = useSelector(
+    (state) => state.passReset
+  );
 
   const handleOnSubmit = (e) => {
     e.preventDefault();
-    console.log(email);
+    dispatch(sendPassResetEmail(email));
   };
 
   const handleOnChange = (e) => {
-    const { name, value } = e.target;
+    const { value } = e.target;
     setEmail(value);
   };
 
@@ -21,6 +35,13 @@ export const PasswordResetForm = () => {
           <Col>
             <h1 className="text-info text-center">Reset Password</h1>
             <hr />
+            {message && (
+              <Alert variant={status === "success" ? "success" : "danger"}>
+                {message}
+              </Alert>
+            )}
+
+            {isLoading && <Spinner variant="primary" animation="border" />}
             <Form autoComplete="off" onSubmit={handleOnSubmit}>
               <Form.Group>
                 <Form.Label>Email Address</Form.Label>

@@ -10,7 +10,7 @@ export const passResetRequest = (email) => {
 
       resolve(data);
     } catch (error) {
-      reject({ status: error, message: error.message });
+      reject(error);
     }
   });
 };
