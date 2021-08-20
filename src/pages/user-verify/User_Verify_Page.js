@@ -11,18 +11,18 @@ const initialResponse = {
 
 export const UserVerifyPage = () => {
   const { _id, email } = useParams();
-  const dt = { _id, email };
 
   const [response, setResponse] = useState(initialResponse);
 
   useEffect(() => {
+    const dt = { _id, email };
     const apiCall = async () => {
       const result = await newUserVerify(dt);
       setResponse(result);
     };
 
     !response.status && apiCall();
-  }, [response]);
+  }, [response, _id, email]);
 
   return (
     <div className="registration_page">
