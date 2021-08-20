@@ -6,9 +6,9 @@ import { userLogout } from "../../api/userApi";
 export const Header = () => {
   const history = useHistory();
   const logMeOut = () => {
+    userLogout();
     sessionStorage.removeItem("accessJWT");
     localStorage.removeItem("InspectApp");
-    userLogout();
     history.push("/");
   };
 
