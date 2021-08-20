@@ -1,7 +1,7 @@
 import React, { useEffect } from "react";
 import { useDispatch, useSelector } from "react-redux";
 import { Route, Redirect } from "react-router-dom";
-import { fetchNewAccessJWT, refreshAccessJWT } from "../../api/userApi";
+import { fetchNewAccessJWT } from "../../api/userApi";
 import { DefaultLayout } from "../../layout/Default_Layout";
 import { getUserProfile } from "../../pages/dashboard/userAction";
 import { loginSuccess } from "../login/loginSlice";
@@ -12,33 +12,31 @@ export const PrivateRoute = ({ children, ...rest }) => {
   const { user } = useSelector((state) => state.user);
 
   useEffect(() => {
-    const refreshJWT = async () => {
-      const result = await refreshAccessJWT();
+    const updateAccessJWT = async () => {
+      const result = await fetchNewAccessJWT();
       result && dispatch(loginSuccess());
     };
-
-    refreshJWT();
-
-    sessionStorage.getItem("accessJWT") && dispatch(loginSuccess());
-  }, [dispatch]);
-
-  // useEffect(() => {
-  //   const updateAccessJWT = async () => {
-  //     const result = await fetchNewAccessJWT();
-  //     result && dispatch(loginSuccess());
-  //   };
-  //   !user._id && dispatch(getUserProfile());
-  //   !sessionStorage.getItem("accessJWT") &&
-  //     localStorage.getItem("InspectApp") &&
-  //     updateAccessJWT();
-  //   !isAuth && sessionStorage.getItem("accessJWT") && dispatch(loginSuccess());
-  // }, [dispatch, isAuth, user._id]);
+    !user._id && dispatch(getUserProfile());
+    !sessionStorage.getItem("accessJWT") &&
+      localStorage.getItem("InspectApp") &&
+      updateAccessJWT();
+    !isAuth && sessionStorage.getItem("accessJWT") && dispatch(loginSuccess());
+  }, [dispatch, isAuth, user._id]);
 
   return (
     <Route
       {...rest}
       render={({ location }) =>
-        isAuth ? <DefaultLayout>{children}</DefaultLayout> : <Redirect to="/" />
+        isAuth ? (
+          <DefaultLayout>{children}</DefaultLayout>
+        ) : (
+          <Redirect
+            to={{
+              pathname: "/",
+              state: { from: location },
+            }}
+          />
+        )
       }
     />
   );
